@@ -69,8 +69,8 @@ export default function Navbar() {
         py={{ base: 1.5, lg: 1 }}
         borderRadius={{ base: '18px', lg: '10px' }}
         border="1px solid"
-        borderColor={scrolled ? 'rgba(77,147,214,0.30)' : 'rgba(255,255,255,0.12)'}
-        bg={scrolled ? 'rgba(5,11,20,0.55)' : 'rgba(255,255,255,0.04)'}
+        borderColor={'brand.amberLight'}
+        bg={scrolled ? 'rgba(5,11,20,0.55)' : 'brand.dark'}
         backdropFilter="blur(20px) saturate(140%)"
         boxShadow={scrolled
           ? '0 10px 34px rgba(0,0,0,0.40)'
@@ -82,13 +82,13 @@ export default function Navbar() {
           fontFamily="heading"
           fontSize="2xl"
           letterSpacing="wider"
+          color="brand.amberLight"
           cursor="pointer"
           onClick={(e) => handleLink(e, '#hero')}
-          color="white"
           _hover={{ color: 'brand.brown' }}
           transition="color 0.2s"
         >
-          {playerData.initials}<Box as="span" color="brand.brown">_</Box>
+          {playerData.initials}<Box as="span" color="brand.boneWarm">_</Box>
         </Text>
 
         {/* Desktop links */}
@@ -108,7 +108,7 @@ export default function Navbar() {
               fontWeight="500"
               letterSpacing="wider"
               textTransform="uppercase"
-              color="whiteAlpha.700"
+              color="brand.boneWarm"
               cursor="pointer"
               transition="color 0.25s"
               _before={{
@@ -143,15 +143,16 @@ export default function Navbar() {
           display={{ base: 'none', lg: 'block' }}
           px={'10px'}
           py={'5px'}
+          bg="brand.amberLight"
           border="1px solid"
-          borderColor= 'brand.brown'
+          borderColor= 'brand.rec'
           borderRadius={'5px'}
           fontFamily="mono"
           fontSize="2xs"
           fontWeight="600"
           letterSpacing="wider"
           textTransform="uppercase"
-          color="brand.brownLight"
+          color="brand.boneWarm"
           cursor="pointer"
           transition="all 0.2s"
           _hover={{ bg: 'brand.brown', color: 'white' }}

@@ -30,10 +30,10 @@ function PlayerPanel() {
       >
         {playerData.number}
       </Text>
-      <Box w={{base:'60px',md:"1px"}} h={{base:"1px", md: "70px", lg: "80px"}} bg="brand.bone" />
+      <Box w={{base:'60px',md:"1px"}} h={{base:"1px", md: "70px", lg: "80px"}} bg="brand.amber" />
       <Flex direction={'column'} justifyContent={'flex-start'} gap={1}>
-        <Flex gap={1}>
-          <Text fontFamily="mono" fontSize={{base:'9px',md:"12px"}} color="brand.boneWarm"
+        <Flex gap={1} justifyContent='flex-start' alignItems='center'>
+          <Text fontFamily="mono" fontSize={{base:'9px',md:"10px"}} color="brand.boneWarm"
             textTransform="uppercase" letterSpacing="widest">
             Posición
           </Text>
@@ -146,7 +146,7 @@ export default function Hero() {
           display="flex"
           alignItems="flex-end"
           justifyContent={{ base: 'center', lg: 'center' }}
-          pl={{ base: 0, lg: '45%' }}
+          pl={{ base: 0, lg: '55%' }}
           pointerEvents="none"
         >
           <Box

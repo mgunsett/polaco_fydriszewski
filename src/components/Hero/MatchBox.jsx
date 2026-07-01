@@ -109,7 +109,7 @@ function CollapsedTab({ last, onClick }) {
       bg="whiteAlpha.100"
       backdropFilter="blur(12px)"
       border="1px solid"
-      borderColor="brand.brown"
+      borderColor="brand.amber"
       borderRightWidth={0}
       borderTopLeftRadius="10px"
       borderBottomLeftRadius="10px"
@@ -124,7 +124,7 @@ function CollapsedTab({ last, onClick }) {
       gap={4}
       transitionProperty="background, border-color"
       transitionDuration="0.3s"
-      _hover={{ bg: 'whiteAlpha.200', borderColor: 'brand.brownLight' }}
+      _hover={{ bg: 'whiteAlpha.200', borderColor: 'brand.amberLight' }}
       _before={{
         content: '""',
         position: 'absolute',
@@ -152,7 +152,7 @@ function CollapsedTab({ last, onClick }) {
             <Text fontFamily="heading" fontSize="md" color="white" lineHeight={1}>
               {last.homeScore}
             </Text>
-            <Text fontFamily="heading" fontSize="xs" color="brand.brown" lineHeight={1}>
+            <Text fontFamily="heading" fontSize="xs" color="brand.amberLight" lineHeight={1}>
               —
             </Text>
             <Text fontFamily="heading" fontSize="md" color="white" lineHeight={1}>
@@ -166,13 +166,13 @@ function CollapsedTab({ last, onClick }) {
       <MotionBox
         as="span"
         display="block"
-        color="brand.dark"
+        color="brand.boneWarm"
         fontSize="16px"
         fontFamily="heading"
         lineHeight={1}
         animate={reduceMotion ? { opacity: 1 } : { x: [0, -5, 0], opacity: [0.5, 1, 0.5] }}
         transition={reduceMotion ? undefined : { duration: 1.6, ease: 'easeInOut', repeat: Infinity }}
-        _hover={{ color: 'brand.bone' }}
+        _hover={{ color: 'brand.rec' }}
       >
         ⟪
       </MotionBox>
@@ -200,7 +200,7 @@ export function MatchBox({ last, next, variant = 'card' }) {
               bg="whiteAlpha.100"
               backdropFilter="blur(12px)"
               border="1px solid"
-              borderColor="brand.brown"
+              borderColor="brand.amber"
               borderRightWidth={0}
               borderTopLeftRadius="10px"
               borderBottomLeftRadius="10px"
@@ -223,20 +223,20 @@ export function MatchBox({ last, next, variant = 'card' }) {
                 top={'130px'}
                 right={3}
                 zIndex={2}
-                color="brand.dark"
+                color="brand.boneWarm"
                 fontFamily="mono"
                 fontSize="lg"
                 lineHeight={1}
                 cursor="pointer"
                 transition="all 0.2s"
-                _hover={{ color: 'brand.brownLight' }}
+                _hover={{ color: 'brand.rec' }}
               >
                 ⟫
               </Box>
 
               <VStack spacing={{ base: 4, md: 6 }} align="stretch">
                 <MatchSlot data={last} label="Último Resultado" labelColor="brand.amber" />
-                <Box h="1px" bg="rgba(255,255,255,0.07)" w="80%" alignSelf="center" />
+                <Box h="1px" bg="brand.amberLight" w="80%" alignSelf="center" />
                 <MatchSlot data={next} label="Próximo Partido" labelColor="brand.brown" />
               </VStack>
             </MotionBox>

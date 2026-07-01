@@ -63,10 +63,10 @@ export default function Footer() {
             fontFamily="heading"
             fontSize="36px"
             letterSpacing="0.08em"
-            color="white"
+            color="brand.amberLight"
           >
             {playerData.initials}
-            <Box as="span" color="brand.brown" ml="1px">_</Box>
+            <Box as="span" color="brand.boneWarm" ml="1px">_</Box>
           </Text>
         </Box>
 
@@ -75,13 +75,13 @@ export default function Footer() {
           fontSize="12px"
           letterSpacing="0.12em"
           textTransform="uppercase"
-          color="whiteAlpha.300"
+          color="brand.boneWarm "
           textAlign="center"
         >
           © 2026 {playerData.displayName} · Todos los derechos reservados
         </Text>
 
-        <Text fontSize="12px" color="rgba(255,255,255,0.3)" letterSpacing="0.05em">
+        <Text fontSize="12px" color="brand.boneWarm" letterSpacing="0.05em">
             Desarrollo Web -{' '}
             <Link
             href="https://matiasgunsett.netlify.app/"
@@ -89,6 +89,7 @@ export default function Footer() {
             color="dev.green"
             _hover={{ borderColor: 'rgba(232,213,163,0.44)', color: 'rgba(232,213,163,0.5)' }}
             transition="color 0.3s"
+            fontSize="14px"
             >
               Matias Gunsett <LiaLaptopCodeSolid style={{ marginLeft: '4px', display: 'inline-block', verticalAlign: 'middle', fontSize: '20px', color: devCream }} />
             </Link>

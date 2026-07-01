@@ -110,7 +110,7 @@ function GalleryCard({ photo, offset, abs, cardW, spacing, total, index, onFocus
         overflow="hidden"
         borderRadius={{ base: '18px', md: '10px' }}
         border="1px solid"
-        borderColor={isCenter ? 'rgba(30,95,168,0.45)' : 'whiteAlpha.100'}
+        borderColor={isCenter ? 'brand.amberLight' : 'whiteAlpha.100'}
         boxShadow={isCenter
           ? '0 40px 90px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05)'
           : '0 24px 60px rgba(0,0,0,0.45)'}
@@ -174,11 +174,12 @@ function GalleryCard({ photo, offset, abs, cardW, spacing, total, index, onFocus
           letterSpacing="wider"
           cursor="pointer"
           onClick={(e) => handleLink(e, '#hero')}
-          color="white"
-          _hover={{ color: 'brand.brown' }}
+          color="brand.amberLight"
+          _hover={{ color: 'brand.amberLight' }}
           transition="color 0.2s"
         >
-          RM<Box as="span" color="brand.brown">_</Box>
+          {playerData.initials}
+          <Box as="span" color="brand.boneWarm">_</Box>
         </Text>
         </Box>
 
@@ -367,12 +368,12 @@ export default function GallerySection() {
             as="button" onClick={prev} aria-label="Anterior"
             boxSize="44px" flexShrink={0}
             display="flex" alignItems="center" justifyContent="center"
-            border="1px solid" borderColor="whiteAlpha.200" borderRadius="full"
-            color="whiteAlpha.800" transition="all 0.25s"
-            _hover={{ bg: 'brand.brown', borderColor: 'brand.brown', color: 'white' }}
+            border="1px solid" borderColor="brand.amberLight" borderRadius="full"
+            color="whiteAlpha.800" transition="all 0.25s" 
+            _hover={{ bg: 'brand.rec', borderColor: 'brand.amberLight  ', color: 'white' }}
             _active={{ transform: 'scale(0.92)' }}
           >
-            <Text fontFamily="heading" fontSize="4xl" lineHeight={1}>‹</Text>
+            <Text fontFamily="heading" fontSize="4xl" lineHeight={1} pt="2px">‹</Text>
           </Box>
 
           {/* Tira de miniaturas */}
@@ -410,12 +411,12 @@ export default function GallerySection() {
             as="button" onClick={next} aria-label="Siguiente"
             boxSize="44px" flexShrink={0}
             display="flex" alignItems="center" justifyContent="center"
-            border="1px solid" borderColor="whiteAlpha.200" borderRadius="full"
+            border="1px solid" borderColor="brand.amberLight" borderRadius="full"
             color="whiteAlpha.800" transition="all 0.25s"
-            _hover={{ bg: 'brand.brown', borderColor: 'brand.brown', color: 'white' }}
+            _hover={{ bg: 'brand.rec', borderColor: 'brand.amberLight', color: 'white' }}
             _active={{ transform: 'scale(0.92)' }}
           >
-            <Text fontFamily="heading" fontSize="4xl" lineHeight={1}>›</Text>
+            <Text fontFamily="heading" fontSize="4xl" lineHeight={1} pt="2px">›</Text>
           </Box>
         </Flex>
       </Box>
