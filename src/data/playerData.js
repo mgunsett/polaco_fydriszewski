@@ -8,14 +8,16 @@ import polaco2 from '@assets/polaco2.png'
 import argentina from '@assets/argentina.webp'
 import ind_medellin from '@assets/ind_medellin.png'
 //Escudos trayectoria
-import escudoTalleres from '@assets/escudos/escudo_talleres.webp'
-import escudoPlatense from '@assets/escudos/escudo_platense.webp'
-import escudoResistencia from '@assets/escudos/escudo_resistencia.webp'
-import escudoStrongest from '@assets/escudos/escudo_strongest.webp'
-import escudoCentralNorte from '@assets/escudos/escudo_central_norte.webp'
-import escudoCapiata from '@assets/escudos/escudo_capiata.webp'
-import escudoCerro from '@assets/escudos/escudo_cerro.webp'
-import escudoParaguay from '@assets/escudos/escudo_paraguay.webp'
+import escudoIndependiente from '@assets/ind_medellin.png'
+import escudoNewells from '@assets/escudos/escudo_newells.webp'
+import escudoSanlorenzo from '@assets/escudos/escudo_sanlorenzo.webp'
+import escudoBarcelona from '@assets/escudos/escudo_barcelona.webp'
+import escudoPortoviejo from '@assets/escudos/escudo_portoviejo.webp'
+import escudoLugo from '@assets/escudos/escudo_lugo.webp'
+import escudoArgentinos from '@assets/escudos/escudo_argentinos.webp'
+import escudoAntofagasta from '@assets/escudos/escudo_antofagasta.webp'
+import escudoVilladalmine from '@assets/escudos/escudo_villadalmine.webp'
+import escudoAucas from '@assets/escudos/escudo_aucas.webp'
 //Gallery
 import image1 from '@assets/gallery/image1.webp'
 import image2 from '@assets/gallery/image2.webp'
@@ -79,68 +81,84 @@ export const playerData = {
 
   clubs: [
     {
-      name:    'Talleres',
-      country: 'Argentina',
+      name:    'Independiente Medellín',
+      country: 'Colombia',
       years:   '2025 — Actualidad',
-      logo:    escudoTalleres,
+      logo:    escudoIndependiente,
       titles:  [],
-      info:    '',
+      info:    'Goleador del Torneo Finalización (12 goles)',
     },
     {
-      name:    'Seleccion Mayor',
-      country: 'Paraguay',
-      years:   '2024 — 2026',
-      logo:    escudoParaguay,
-      titles:  [],
-      info:    '',
-    },
-    {
-      name:    'Platense',
+      name:    'San Lorenzo',
       country: 'Argentina',
-      years:   '2024 — 2025',
-      logo:    escudoPlatense,
-      titles:  ['Torneo Apertura 2025'],
-      info:    'Goleador del Torneo',
-    },
-    {
-      name:    'Resistencia SC',
-      country: 'Paraguay',
-      years:   '2022',
-      logo:    escudoResistencia,
+      years:   '2024',
+      logo:    escudoSanlorenzo,
       titles:  [],
       info:    '',
     },
     {
-      name:    'The Strongest',
-      country: 'Bolivia',
-      years:   '2021',
-      logo:    escudoStrongest,
+      name:    'Barcelona SC',
+      country: 'Ecuador',
+      years:   '2023 — 2024',
+      logo:    escudoBarcelona,
       titles:  [],
-      info:    'Préstamo',
+      info:    '',
     },
     {
-      name:    'Central Norte',
+      name:    'Aucas',
+      country: 'Ecuador',
+      years:   '2021 — 2022',
+      logo:    escudoAucas,
+      titles:  ['Serie A Ecuador 2022'],
+      info:    ['Goleador del Torneo (15 goles)', 'Goleador de la Copa Colombia (5 goles)'],
+    },
+    {
+      name:    'Liga Portoviejo',
+      country: 'Ecuador',
+      years:   '2020',
+      logo:    escudoPortoviejo,
+      titles:  [],
+      info:    'Máximo goleador del Equipo (13 goles)',
+    },
+    {
+      name:    'Newell\'s Old Boys',
       country: 'Argentina',
-      years:   '2019',
-      logo:    escudoCentralNorte,
-      titles:  ['Torneo Regional Federal 2019'],
-      info:    'Préstamo',
+      years:   '2018 — 2019',
+      logo:    escudoNewells,
+      titles:  [''],
+      info:    '',
     },
     {
-      name:    'Capiatá',
-      country: 'Paraguay',
-      years:   '2018',
-      logo:    escudoCapiata,
+      name:    'C.D. Lugo',
+      country: 'España',
+      years:   '2017 — 2018',
+      logo:    escudoLugo,
       titles:  [],
-      info:    'Préstamo',
+      info:    '',
     },
     {
-      name:    'Cerro Porteño',
-      country: 'Paraguay',
-      years:   '2015 — 2021',
-      logo:    escudoCerro,
-      titles:  ['Torneo Apertura 2015', 'Torneo Clausura 2017', 'Torneo Apertura 2020'],
-      info:    'Debut profesional ',
+      name:    'Argentinos Juniors',
+      country: 'Argentina',
+      years:   '2016 — 2017',
+      logo:    escudoArgentinos,
+      titles:  ['Ascenso a Primera División 2016'],
+      info:    ['Préstamo', 'Máximo goleador del Equipo (13 goles)'],
+    },
+    {
+      name:    'Villa Dálmine',
+      country: 'Argentina',
+      years:   '2015',
+      logo:    escudoVilladalmine,
+      titles:  [],
+      info:    '',
+    },
+    {
+      name:    'Newell\'s Old Boys',
+      country: 'Argentina',
+      years:   '2014 — 2015',
+      logo:    escudoNewells,
+      titles:  [''],
+      info:    'Inferiores y debut en Primera División',
     },
   ],
 

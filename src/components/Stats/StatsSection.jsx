@@ -7,8 +7,12 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import useScrubReveal from '../../hooks/useScrubReveal'
 import { playerData } from '../../data/playerData'
+import { RadarStats } from './RadarStats.jsx'
 
 gsap.registerPlugin(ScrollTrigger)
+
+// Cambiá a false para volver al diseño original (bento de 3 columnas)
+const USE_RADAR = true
 
 function BioCard() {
   const BIO = [
@@ -26,7 +30,7 @@ function BioCard() {
                 fontSize="11px"
                 letterSpacing="0.28em"
                 textTransform="uppercase"
-                color="whiteAlpha.600"
+                color="brand.boneWarm"
                 mb={5}
               >
                 Datos personales
@@ -34,22 +38,11 @@ function BioCard() {
             <Box
               bg="brand.dark"
               border="1px solid"
-              borderColor="whiteAlpha.100"
+              borderColor="brand.amber"
               borderRadius={'10px'}
               p={{ base: 5, md: 6 }}
               h="90%"
               position="relative"
-              sx={{
-                '&::before': {
-                  content: '""',
-                  position: 'absolute',
-                  top: 0,
-                  left: 2,
-                  width: '36px',
-                  height: '3px',
-                  bg: 'brand.brown',
-                },
-              }}
             >
               <VStack align="stretch" spacing={3}>
                 {BIO.map((row) => (
@@ -113,7 +106,7 @@ function SeasonCards() {
         fontSize="11px"
         letterSpacing="0.28em"
         textTransform="uppercase"
-        color="whiteAlpha.600"
+        color="brand.boneWarm"
         mb={5}
       >
         última temporada
@@ -198,7 +191,7 @@ function StatBars() {
         fontSize="11px"
         letterSpacing="0.28em"
         textTransform="uppercase"
-        color="whiteAlpha.600"
+        color="brand.boneWarm"
         mb={5}
       >
         Hablidades
@@ -378,9 +371,21 @@ function ClubNode({ club, isFirst, isLast, isActive }) {
         )}
 
         {club.info && (
-          <Text fontFamily="mono" fontSize="10px" color="brand.gray" lineHeight={1.5} mt={3}>
-            {club.info}
-          </Text>
+          <VStack spacing={1} mt={3}>
+            {(Array.isArray(club.info) ? club.info : [club.info])
+              .filter(Boolean)
+              .map((line) => (
+                <Text
+                  key={line}
+                  fontFamily="mono"
+                  fontSize="10px"
+                  color="brand.gray"
+                  lineHeight={1.5}
+                >
+                  {line}
+                </Text>
+              ))}
+          </VStack>
         )}
       </Box>
     </Box>
@@ -461,9 +466,8 @@ function ClubTimeline() {
         pb={6}
         sx={{
           scrollSnapType: 'x mandatory',
-          '&::-webkit-scrollbar': { height: '2px' },
-          '&::-webkit-scrollbar-track': { bg: 'whiteAlpha.50' },
-          '&::-webkit-scrollbar-thumb': { bg: 'brand.brown' },
+          scrollbarWidth: 'none',
+          '&::-webkit-scrollbar': { display: 'none' },
         }}
         onMouseDown={onDown}
         onMouseMove={onMove}
@@ -531,15 +535,19 @@ export default function StatsSection() {
           </Box>
         </Flex>
 
-        {/* 3-column grid */}
-        <Grid
-          templateColumns={{ base: '1fr', md: '1fr 1fr', lg: '1fr 1.1fr 1fr' }}
-          gap={5}
-        >
-          <GridItem><BioCard /></GridItem>
-          <GridItem><SeasonCards /></GridItem>
-          <GridItem><StatBars /></GridItem>
-        </Grid>
+        {/* Contenido: radar (nuevo) o bento de 3 columnas (original) */}
+        {USE_RADAR ? (
+          <RadarStats />
+        ) : (
+          <Grid
+            templateColumns={{ base: '1fr', md: '1fr 1fr', lg: '1fr 1.1fr 1fr' }}
+            gap={5}
+          >
+            <GridItem><BioCard /></GridItem>
+            <GridItem><SeasonCards /></GridItem>
+            <GridItem><StatBars /></GridItem>
+          </Grid>
+        )}
 
         {/* Club timeline */}
         <ClubTimeline />

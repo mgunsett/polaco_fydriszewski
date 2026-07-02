@@ -142,7 +142,7 @@ export default function Hero() {
         <Box
           position="absolute"
           inset={0}
-          zIndex={{base: 3, md: 5,  lg:'9999999 !important'}}
+          zIndex={{base: 3, md: 5,  lg:9}}
           display="flex"
           alignItems="flex-end"
           justifyContent={{ base: 'center', lg: 'center' }}
