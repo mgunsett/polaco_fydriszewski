@@ -37,7 +37,7 @@ import ledsports from '@assets/contact3.webp'
 
 
 const name = 'POLACO'
-const fullName = 'FIDRISZEWSKI'
+const fullName = 'FYDRISZEWSKI'
 
 export const playerData = {
   name,
@@ -179,25 +179,25 @@ export const playerData = {
 
   press: [
     {
-      media: 'El Gráfico',
+      media: 'ESPN Deportes',
       logo:  logo1,
-      title: 'Se ha inmortalizado en los libros de récords al convertirse en el máximo goleador del Torneo Clausura 2025',
-      date:  'Diciembre 2025',
-      url:   'https://www.elgrafico.com.ar/articulo/primera-division/95962/cuantas-veces-platense-tuvo-al-goleador-del-campeonato-de-primera-division',
-    },
-    {
-      media: 'La Voz',
-      logo:  logo2,
-      title: 'El delantero paraguayo puso el 1-0 y fue clave en la noche feliz de la “T” ante Newell’s.',
-      date:  'Enero 2026',
-      url:   'https://www.lavoz.com.ar/deportes/futbol/ronaldo-martinez-figura-de-talleres-como-esta-de-la-lesion-y-por-que-festejo-a-lo-cristiano/',
-    },
-    {
-      media: 'Cba24N',
-      logo:  logo3,
-      title: 'Convocado por la selección de Paraguay para participar en la próxima ventana internacional de la fecha FIFA',
+      title: 'Fydriszewski marcó golazo agónico en Medellín vs. Juventud de Libertadores',
       date:  'Marzo 2026',
-      url:   'https://www.cba24n.com.ar/deportes/futbol/talleres/ronaldo-martinez--convocado-a-la-seleccion-de-paraguay-para-la-proxima-ventana-internacional_a69ac304f2128774661b1005d',
+      url:   'https://espndeportes.espn.com/futbol/copa-libertadores/nota/_/id/16429009/medellin-vs-juventud-fydriszewski-video-goles-copa-libertadores',
+    },
+    {
+      media: 'InfoBae',
+      logo:  logo2,
+      title: 'Cusco FC sufrió gol agónico de Fydriszewski con el que perdió a manos de Independiente por Copa Libertadores',
+      date:  'Mayo 2026',
+      url:   'https://www.infobae.com/peru/deportes/2026/05/01/cusco-fc-sufrio-gol-agonico-de-francisco-fydriszewski-con-el-que-perdio-a-manos-de-independiente-medellin-por-fecha-3-de-copa-libertadores-2026/',
+    },
+    {
+      media: 'AS Colombia',
+      logo:  logo3,
+      title: 'Fydriszewski y su sueño con el DIM: “Estamos para jugar la final y levantar el título”',
+      date:  'Octubre 2025',
+      url:   'https://colombia.as.com/futbol/fydriszewski-y-su-sueno-con-el-dim-estamos-para-jugar-la-final-y-levantar-el-titulo-f202510-n/',
     },
   ],
 

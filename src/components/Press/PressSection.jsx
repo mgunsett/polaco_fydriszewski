@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react'
+                import { useRef, useEffect } from 'react'
 import { Box, Grid, Text, Flex, VStack, HStack, Link, Image, useToken } from '@chakra-ui/react'
 import { FaStar } from 'react-icons/fa'
 import { gsap } from 'gsap'
@@ -23,7 +23,9 @@ function Stars({ count = 5 }) {
     <HStack spacing={1}>
       {Array.from({ length: 5 }).map((_, i) => (
         <Box key={i} as={FaStar} boxSize="14px"
-          color={i < count ? 'brand.amber' : 'whiteAlpha.200'} />
+          color={i < count ? 'brand.amber' : 'whiteAlpha.200'} 
+          _hover={{ color: 'brand.dorado' }}
+          />
       ))}
     </HStack>
   )
@@ -85,12 +87,17 @@ function PressCard({ article, index }) {
             <Stars count={article.rating ?? 5} />
             <Box
               px={2.5} py={1}
-              bg="rgba(30,95,168,0.10)"
-              border="1px solid rgba(30,95,168,0.28)"
+              bg="brand.panel"
+              border="1px solid"
+              borderColor="brand.amberLight"
               borderRadius="sm"
-            >
-              <Text fontFamily="mono" fontSize="9px" color="brand.brownLight"
-                textTransform="uppercase" letterSpacing="0.18em">
+              transition="border-color 0.35s, background 0.35s"
+              _groupHover={{ borderColor: 'brand.accent', bg: 'brand.dark' }}
+              >
+                <Text fontFamily="mono" fontSize="9px" color="brand.rec"
+                textTransform="uppercase" letterSpacing="0.18em"
+                _groupHover={{ color: 'brand.boneWarm'}}
+                >
                 {article.media}
               </Text>
             </Box>
