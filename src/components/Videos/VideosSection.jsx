@@ -131,9 +131,9 @@ export default function VideosSection() {
         position="absolute"
         top={{base:'10%',md:"-5%"}}
         right="-12%"
-        w="55vw"
-        h="55vw"
-        background="radial-gradient(ellipse, rgba(30,95,168,0.16) 0%, transparent 70%)"
+        w="45vw"
+        h="45vw"
+        background="radial-gradient(ellipse, #9131311e 0%, transparent 70%)"
         pointerEvents="none"
       />
 
@@ -151,10 +151,10 @@ export default function VideosSection() {
         pointerEvents="none"
         userSelect="none"
         zIndex={0}
-        sx={{ WebkitTextStroke: '1.5px rgba(30,95,168,0.14)' }}
+        sx={{ WebkitTextStroke: '1.5px #91313167' }}
       >
         {playerData.number}
-      </Text>
+      </Text> 
     
       <Box maxW="1240px" mx="auto" position="relative" zIndex={1}>
 
@@ -165,7 +165,7 @@ export default function VideosSection() {
               HIGHLIGHTS
             </Text>
             <Text as="h2" fontFamily="heading" fontSize={{ base: '5xl', lg: '6xl' }}
-              color="brand.brown" lineHeight={1}>
+              color="brand.amberLight" lineHeight={1}>
               Videos
             </Text>
         </Flex>

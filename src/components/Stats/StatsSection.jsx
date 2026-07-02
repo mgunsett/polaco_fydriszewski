@@ -271,7 +271,7 @@ function ClubNode({ club, isFirst, isLast, isActive }) {
             left="50%"
             right={0}
             h="1px"
-            bgGradient="linear(to-r, brand.brown, transparent)"
+            bgGradient="linear(to-r, brand., transparent)"
             transform="translateY(-50%)"
           />
         )}
@@ -286,13 +286,13 @@ function ClubNode({ club, isFirst, isLast, isActive }) {
           zIndex={1}
           bg="brand.panel"
           border="1px solid"
-          borderColor={isActive ? 'brand.brown' : 'whiteAlpha.200'}
+          borderColor={isActive ? 'brand.amberLight' : 'whiteAlpha.200'}
           boxShadow={isActive ? '0 0 0 4px rgba(30,95,168,0.18), 0 0 26px rgba(30,95,168,0.35)' : 'none'}
           transition="border-color 0.35s, box-shadow 0.35s, transform 0.35s"
           _groupHover={{
-            borderColor: 'brand.brown',
+            borderColor: 'brand.amberLight',
             transform: 'translateY(-4px)',
-            boxShadow: '0 0 0 4px rgba(30,95,168,0.18), 0 0 26px rgba(30,95,168,0.35)',
+            boxShadow: '0 0 0 4px rgba(151, 101, 103, 0.18), 0 0 26px rgba(97, 35, 35, 0.35)',
           }}
         >
           <Image
@@ -324,11 +324,11 @@ function ClubNode({ club, isFirst, isLast, isActive }) {
         _before={{
           content: '""', position: 'absolute', top: 0, left: '50%',
           transform: 'translateX(-50%)',
-          w: isActive ? '40px' : '0', h: '2px', bg: 'brand.brown',
+          w: isActive ? '40px' : '0', h: '2px', bg: 'brand.amber', borderRadius: 'full',
           transition: 'width 0.35s',
         }}
         _groupHover={{
-          borderColor: 'rgba(30,95,168,0.5)',
+          borderColor: 'brand.amberLight',
           transform: 'translateY(-4px)',
           bg: 'rgba(30,95,168,0.04)',
           _before: { width: '40px' },
@@ -340,6 +340,7 @@ function ClubNode({ club, isFirst, isLast, isActive }) {
           color={isActive ? 'brand.brownLight' : 'brand.gray'}
           textTransform="uppercase"
           letterSpacing="0.2em"
+          _groupHover={{ color: 'brand.brownLight' }}
         >
           {club.years}
         </Text>
@@ -361,9 +362,9 @@ function ClubNode({ club, isFirst, isLast, isActive }) {
           <VStack spacing={1.5} mt={3}>
             {club.titles.map((t) => (
               <HStack key={t} spacing={1.5} justify="center">
-                <Box w="4px" h="4px" bg="brand.amber" borderRadius="full" flexShrink={0} />
-                <Text fontFamily="mono" fontSize="9px" color="brand.amber" letterSpacing="0.12em">
-                  {t}
+                
+                <Text fontFamily="mono" fontSize="9px" color="brand.dorado" letterSpacing="0.12em">
+                  🏆 {t}
                 </Text>
               </HStack>
             ))}
@@ -431,10 +432,10 @@ function ClubTimeline() {
     justifyContent: 'center',
     borderRadius: 'full',
     border: '1px solid',
-    borderColor: 'whiteAlpha.200',
-    color: 'whiteAlpha.700',
+    borderColor: 'brand.boneWarm',
+    color: 'brand.boneWarm',
     transition: 'all 0.25s',
-    _hover: { borderColor: 'brand.brown', color: 'white', bg: 'rgba(30,95,168,0.12)' },
+    _hover: { borderColor: 'brand.amberLight', color: 'white', bg: 'rgba(30,95,168,0.12)' },
     _active: { transform: 'scale(0.92)' },
   }
 
@@ -447,7 +448,7 @@ function ClubTimeline() {
             Trayectoria
           </Text>
           <Text as="h2" fontFamily="heading" fontSize={{ base: '5xl', lg: '6xl' }}
-                  color="brand.brown" lineHeight={1}>
+                  color="brand.amberLight" lineHeight={1}>
             Clubes
           </Text>
         </Box>
@@ -529,7 +530,7 @@ export default function StatsSection() {
               Temporada 2025 / 2026
             </Text>
             <Text as="h2" fontFamily="heading" fontSize={{ base: '5xl', lg: '6xl' }}
-                  color="brand.brown" lineHeight={1}>
+                  color="brand.amberLight" lineHeight={1}>
               Estadísticas
             </Text>
           </Box>

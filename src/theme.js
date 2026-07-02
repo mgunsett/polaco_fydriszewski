@@ -8,6 +8,7 @@ const brand = {
   amber:      '#913131', // detalle rojizo/dorado
   amberDark:  '#7A1F1F', // detalle rojizo/dorado oscuro
   amberLight: '#913131ad', // detalle rojizo/dorado claro
+  dorado:     '#c0ab32', // dorado
   dark:       '#050B14', // azul casi negro (fondo)
   gray:       '#7A8CA3', // azul grisáceo (texto secundario)
   bone:       '#FFFFFF', // blanco (texto principal)

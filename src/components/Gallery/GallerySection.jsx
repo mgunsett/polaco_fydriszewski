@@ -294,7 +294,7 @@ export default function GallerySection() {
               Fotos
             </Text>
             <Text as="h2" fontFamily="heading" fontSize={{ base: '5xl', lg: '6xl' }}
-                  color="brand.brown" lineHeight={1}>
+                  color="brand.amberLight" lineHeight={1}>
               Galería
             </Text>
           </Box>

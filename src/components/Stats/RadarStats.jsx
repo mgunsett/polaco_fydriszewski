@@ -199,11 +199,11 @@ function ColumnShell({ title, side = 'left', children }) {
         fontFamily="mono"
         fontSize="12px" fontWeight="700"
         letterSpacing="0.28em" textTransform="uppercase"
-        color="brand.gray"
+        color="brand.boneWarm"
         mb={{ base: 4, lg: 5 }}
         pb={2}
         borderBottom="1px solid"
-        borderColor="whiteAlpha.100"
+        borderColor="brand.boneWarm"
       >
         {title}
       </Text>
@@ -260,6 +260,7 @@ function SeasonColumn({ items }) {
     <Grid
       templateColumns={{ base: 'repeat(2, 1fr)', sm: 'repeat(3, 1fr)', lg: 'repeat(2, 1fr)' }}
       gap={{ base: 2.5, lg: 3 }}
+      
     >
       {items.map((item) => (
         <Box
@@ -269,10 +270,11 @@ function SeasonColumn({ items }) {
           borderColor="whiteAlpha.100"
           borderRadius="10px"
           p={{ base: 3, lg: 3.5 }}
-          bg="rgba(255,255,255,0.02)"
+          bg="brand.dark"
           transition="border-color 0.3s, background 0.3s, transform 0.3s"
+          role="group"
           _hover={{
-            borderColor: 'brand.brownLight',
+            borderColor: 'brand.amberLight',
             bg: 'rgba(30,95,168,0.07)',
             transform: 'translateY(-2px)',
           }}
@@ -292,6 +294,7 @@ function SeasonColumn({ items }) {
             color="brand.gray"
             mt={1.5}
             lineHeight="1.2"
+            _groupHover={{ color: 'brand.boneWarm' }}
           >
             {item.label}
           </Text>
@@ -321,21 +324,10 @@ export function RadarStats() {
     <Box
       bg="brand.panel"
       border="1px solid"
-      borderColor="whiteAlpha.100"
+      borderColor="brand.amberLight"
       borderRadius="14px"
       p={{ base: 6, md: 10, lg: 12 }}
       position="relative"
-      sx={{
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          top: 0,
-          left: 6,
-          width: '40px',
-          height: '3px',
-          bg: 'brand.amber',
-        },
-      }}
     >
       <Grid
         templateColumns={{ base: '1fr', md: '1fr 1fr', lg: '1fr 1.05fr 1fr' }}
@@ -346,7 +338,7 @@ export function RadarStats() {
         <Box
           order={{ base: 2, md: 1, lg: 1 }}
           borderRight={{ lg: '1px solid' }}
-          borderColor="whiteAlpha.100"
+          borderColor="brand.amberLight !important"
           pr={{ base: 0, lg: 10 }}
         >
           <ColumnShell title="Perfil" side="left">
@@ -370,7 +362,7 @@ export function RadarStats() {
         <Box
           order={{ base: 3, md: 2, lg: 3 }}
           borderLeft={{ lg: '1px solid' }}
-          borderColor="brand.amberLight"
+          borderColor="brand.amberLight !important"
           pl={{ base: 0, lg: 10 }}
         >
           <ColumnShell title="Temporada Actual" side="right">

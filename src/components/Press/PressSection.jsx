@@ -31,7 +31,7 @@ function Stars({ count = 5 }) {
 
 function PressCard({ article, index }) {
   const cardRef = useRef(null)
-  const [panel, brownDark, accent] = useToken('colors', ['brand.panel', 'brand.brownDark', 'brand.accent'])
+  const [panel, brownDark, accent, amberLight] = useToken('colors', ['brand.panel', 'brand.brownDark', 'brand.accent', 'brand.amberLight'])
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -59,7 +59,7 @@ function PressCard({ article, index }) {
         textDecoration="none"
         bg="brand.panel"
         border="1px solid"
-        borderColor="whiteAlpha.100"
+        borderColor="brand.amberLight"
         borderRadius="lg"
         p={6}
         position="relative"
@@ -69,11 +69,11 @@ function PressCard({ article, index }) {
           w: 0, h: 0,
           borderLeft: '10px solid transparent',
           borderRight: '10px solid transparent',
-          borderTop: `10px solid ${panel}`,
+          borderTop: `10px solid ${amberLight}`,
           filter: 'drop-shadow(0 1px 0 rgba(255,255,255,0.06))',
         }}
         _groupHover={{
-          borderColor: 'rgba(30,95,168,0.5)',
+          borderColor: 'brand.accent',
           transform: 'translateY(-4px)',
           bg: 'brand.dark',
           _before: { width: '40px' },
@@ -120,7 +120,7 @@ function PressCard({ article, index }) {
           justify="center"
           bg={`linear-gradient(135deg, ${brownDark}, ${accent})`}
           border="1px solid"
-          borderColor="whiteAlpha.200"
+          borderColor="brand.amber"
           transition="border-color 0.35s, box-shadow 0.35s"
           _groupHover={{
             borderColor: 'brand.brown',
@@ -173,7 +173,7 @@ export default function PressSection() {
       ref={sectionRef}
       bg="brand.dark"
       pb={{ base: 16, lg: 20 }}
-      pt={0}
+      pt={{ base: 2, lg: 12 }}
       px={{ base: 5, lg: 10 }}
     >
       <Box maxW="1400px" mx="auto">
@@ -185,7 +185,7 @@ export default function PressSection() {
               Testimonios
             </Text>
             <Text as="h2" fontFamily="heading" fontSize={{ base: '5xl', lg: '6xl' }}
-                  color="brand.brown" lineHeight={1}>
+                  color="brand.amberLight" lineHeight={1}>
               Prensa
             </Text>
           </Box>
