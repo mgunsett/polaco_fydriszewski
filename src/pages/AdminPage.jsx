@@ -10,9 +10,9 @@ import { playerData } from '../data/playerData'
 import {
   signInWithEmailAndPassword, signOut, onAuthStateChanged,
 } from 'firebase/auth'
-import { doc, getDoc, setDoc, deleteDoc } from 'firebase/firestore'
+import { getDoc, setDoc, deleteDoc } from 'firebase/firestore'
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
-import { db, auth, storage, isFirebaseConfigured } from '../lib/firebase'
+import { auth, storage, isFirebaseConfigured, playerMatchDoc, PLAYER_SLUG } from '../lib/firebase'
 
 const emptySlot = {
   home_team: '', away_team: '',
@@ -390,8 +390,8 @@ export default function AdminPage() {
     if (!user) return
     const loadMatches = async () => {
       const [lastSnap, nextSnap] = await Promise.all([
-        getDoc(doc(db, 'matches', 'last')),
-        getDoc(doc(db, 'matches', 'next')),
+        getDoc(playerMatchDoc('last')),
+        getDoc(playerMatchDoc('next')),
       ])
       const result = {}
       if (lastSnap.exists()) result.last = lastSnap.data()
@@ -419,7 +419,7 @@ export default function AdminPage() {
   const uploadShield = async (file, name) => {
     if (!file) return null
     const ext = file.name.split('.').pop()
-    const path = `shields/${name.replace(/\s+/g, '_').toLowerCase()}.${ext}`
+    const path = `players/${PLAYER_SLUG}/shields/${name.replace(/\s+/g, '_').toLowerCase()}.${ext}`
     const storageRef = ref(storage, path)
     await uploadBytes(storageRef, file)
     return getDownloadURL(storageRef)
@@ -447,7 +447,7 @@ export default function AdminPage() {
         updated_at:  new Date().toISOString(),
       }
 
-      await setDoc(doc(db, 'matches', slot), payload)
+      await setDoc(playerMatchDoc(slot), payload)
       setMatchData((prev) => ({ ...prev, [slot]: payload }))
       toast({ title: 'Partido guardado', status: 'success', duration: 3000 })
     } catch (err) {
@@ -459,7 +459,7 @@ export default function AdminPage() {
 
   const handleDelete = async (slot) => {
     try {
-      await deleteDoc(doc(db, 'matches', slot))
+      await deleteDoc(playerMatchDoc(slot))
       setMatchData((prev) => ({ ...prev, [slot]: {} }))
       toast({ title: 'Partido eliminado', status: 'info', duration: 3000 })
     } catch (err) {

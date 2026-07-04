@@ -25,6 +25,7 @@ import image3 from '@assets/gallery/image3.webp'
 import image4 from '@assets/gallery/image4.webp'
 import image5 from '@assets/gallery/image5.webp'
 import image6 from '@assets/gallery/image6.webp'
+import image7 from '@assets/gallery/image7.webp'
 //Video
 import photoGraph from '@assets/perfil_video.webp'
 //Prensa
@@ -34,6 +35,7 @@ import logo3 from '@assets/logos/logo3.webp'
 //Redes
 import transfermkt from '@assets/contact2.svg'
 import ledsports from '@assets/contact3.webp'
+import moon from '@assets/contact4.webp'
 
 
 const name = 'POLACO'
@@ -49,12 +51,12 @@ export const playerData = {
   positionShort: 'DEL',
   nationality: 'Argentina',
   nationalityFlag: argentina,
-  age: 30,
-  height: '1.78m',
-  weight: '68kg',
+  age: 33,
+  height: '1.85m',
+  weight: '74kg',
   foot: 'Derecho',
-  birthDate: '25 / 04 / 1996',
-  birthPlace: 'Eusebio Ayala, Paraguay',
+  birthDate: '13 / 04 / 1993',
+  birthPlace: 'Rosario, Argentina',
   currentClub: 'Independiente Medellín',
   logoCurrentClub: ind_medellin,
   image: polaco1,
@@ -202,12 +204,13 @@ export const playerData = {
   ],
 
   gallery: [
-    { id: 1, src: image1, alt: 'Ronaldo Martínez disputando la pelota en la Liga Profesional 2024', caption: 'Liga Profesional 2024', category: 'Partido', aspect: 'wide' },
-    { id: 2, src: image2, alt: 'Ronaldo Martínez celebrando un gol ante Racing',                   caption: 'Festejo ante Racing',    category: 'Festejo', aspect: 'tall' },
-    { id: 3, src: image3, alt: 'Ronaldo Martínez durante el entrenamiento de pretemporada 2025',    caption: 'Pretemporada 2025',       category: 'Entrenamiento', aspect: 'square' },
-    { id: 4, src: image4, alt: 'Ronaldo Martínez en partido de Copa Argentina 2024',                caption: 'Copa Argentina 2024',     category: 'Partido', aspect: 'wide' },
-    { id: 5, src: image5, alt: 'Ronaldo Martínez junto al plantel de Talleres 2024',                caption: 'Plantel Talleres 2024',   category: 'Equipo',  aspect: 'wide' },
-    { id: 6, src: image6, alt: 'Ronaldo Martínez en sesión fotográfica oficial 2024',               caption: 'Foto oficial 2024',       category: 'Retrato', aspect: 'tall' },
+    { id: 1, src: image1, alt: 'Francisco Fydriszewski', caption: 'Liga Profesional 2024', category: 'Partido', aspect: 'wide' },
+    { id: 2, src: image2, alt: 'Francisco Fydriszewski', caption: 'Festejo ante Racing',    category: 'Festejo', aspect: 'tall' },
+    { id: 3, src: image3, alt: 'Francisco Fydriszewski', caption: 'Pretemporada 2025',       category: 'Entrenamiento', aspect: 'square' },
+    { id: 4, src: image4, alt: 'Francisco Fydriszewski', caption: 'Copa Argentina 2024',     category: 'Partido', aspect: 'wide' },
+    { id: 5, src: image5, alt: 'Francisco Fydriszewski', caption: 'Plantel Talleres 2024',   category: 'Equipo',  aspect: 'wide' },
+    { id: 6, src: image6, alt: 'Francisco Fydriszewski', caption: 'Foto oficial 2024',       category: 'Retrato', aspect: 'tall' },
+    { id: 7, src: image7, alt: 'Francisco Fydriszewski', caption: 'Liga Profesional 2025', category: 'Partido', aspect: 'wide' },
   ],
 
   socialMedia: [
@@ -215,8 +218,8 @@ export const playerData = {
       label: 'Instagram',
       icon: FaInstagram,
       iconBg: FaInstagram,
-      handle: '@ronaldoivan',
-      url: 'https://www.instagram.com/ronaldoivan/',
+      handle: '@franciscofydriszewskiok',
+      url: 'https://www.instagram.com/franciscofydriszewskiok/',
       hoverColor: '#E1306C',
       hoverGradient: 'insta-gradient',
     },
@@ -224,8 +227,8 @@ export const playerData = {
       label: 'TransferMarkt',
       image: transfermkt,
       iconBg: IoMdStats,
-      handle: '@ronaldo-martinez',
-      url: 'https://www.transfermarkt.com.ar/ronaldo-martinez/profil/spieler/567736',
+      handle: '@franciscofydriszewski',
+      url: 'https://www.transfermarkt.com.ar/francisco-fydriszewski/profil/spieler/337921',
       hoverColor: 'brand.brownLight',
     },
   ],
@@ -233,10 +236,10 @@ export const playerData = {
   contact: [
     {
       title:      'Representante Deportivo',
-      label:      'Universal Twenty Two',
-      icon:       FaEnvelope,
-      handle:     '@twentytwo_sm',
-      url:        'https://www.instagram.com/twentytwo_sm/',
+      label:      'Moon Sports Group',
+      image:       moon,
+      handle:     '@moonsportsgroup_',
+      url:        'https://www.instagram.com/moonsportsgroup_/',
       hoverColor: 'rgba(139,69,19,0.18)',
     },
     {

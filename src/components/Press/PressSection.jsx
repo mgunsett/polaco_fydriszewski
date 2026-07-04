@@ -24,7 +24,7 @@ function Stars({ count = 5 }) {
       {Array.from({ length: 5 }).map((_, i) => (
         <Box key={i} as={FaStar} boxSize="14px"
           color={i < count ? 'brand.amber' : 'whiteAlpha.200'} 
-          _hover={{ color: 'brand.dorado' }}
+          _groupHover={{ color: 'brand.dorado' }}
           />
       ))}
     </HStack>
@@ -67,12 +67,13 @@ function PressCard({ article, index }) {
         position="relative"
         transition="border-color 0.35s, transform 0.35s, background 0.35s"
         _after={{
-          content: '""', position: 'absolute', bottom: '-9px', left: 8,
+          content: '""', position: 'absolute', bottom: '-10px', left: 8,
           w: 0, h: 0,
           borderLeft: '10px solid transparent',
           borderRight: '10px solid transparent',
           borderTop: `10px solid ${amberLight}`,
           filter: 'drop-shadow(0 1px 0 rgba(255,255,255,0.06))',
+          _groupHover: { borderTopColor: accent },
         }}
         _groupHover={{
           borderColor: 'brand.accent',

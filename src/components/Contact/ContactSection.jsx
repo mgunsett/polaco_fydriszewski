@@ -25,7 +25,7 @@ function SocialCard({ item }) {
       role="group"
       _hover={{
         transform: 'translateY(-3px)',
-          borderColor: 'brand.brownDark',
+          borderColor: 'brand.amber',
           bg: 'brand.dark'
       }}
     >
@@ -100,7 +100,7 @@ function ContactRow({ item, gold }) {
       border="1px solid"
       borderColor="whiteAlpha.100"
       borderRadius='10px'
-      borderLeftColor= {gold ? 'brand.amber' : 'brand.brownDark'}
+      borderLeftColor= {gold ? 'brand.orange' : 'brand.accent'}
       borderLeftWidth= '4px'
       borderLeftStyle= 'solid'
       p={{ base: 5, md: 8 }}
@@ -108,7 +108,7 @@ function ContactRow({ item, gold }) {
       role="group"
       _hover={{
         transform: 'translateY(-3px)',
-        borderColor: gold ? 'brand.amber' : 'brand.brown',
+        borderColor: gold ? 'brand.orange' : 'brand.accent',
       }}
     >
       <Flex align="center" gap={4}>
@@ -205,7 +205,7 @@ export function ContactSection() {
             #Redes
           </Text>
           <Text as="h2" fontFamily="heading" fontSize={{ base: '5xl', lg: '6xl' }}
-                  color="brand.brown" lineHeight={1}>
+                  color="brand.amberLight" lineHeight={1}>
             Contacto
           </Text>
         </Box>
@@ -217,7 +217,7 @@ export function ContactSection() {
             fontSize="11px"
             letterSpacing="0.28em"
             textTransform="uppercase"
-            color="whiteAlpha.600"
+            color="brand.boneWarm"
             mb={5}
           >
             Redes sociales
@@ -248,7 +248,7 @@ export function ContactSection() {
                 fontSize="11px"
                 letterSpacing="0.28em"
                 textTransform="uppercase"
-                color="whiteAlpha.600"
+                color="brand.boneWarm"
                 mb={5}
           >
             Representante Deportivo
@@ -267,7 +267,7 @@ export function ContactSection() {
                 fontSize="11px"
                 letterSpacing="0.28em"
                 textTransform="uppercase"
-                color="brand.amber"
+                color="brand.orangeLight"
                 mb={5}
           >
             Representante de marketing
