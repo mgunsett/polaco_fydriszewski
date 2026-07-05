@@ -7,6 +7,7 @@ import MatchBox from './MatchBox'
 import { playerData } from '../../data/playerData'
 import useMatches from '../../hooks/useMatches'
 import heroBg from '@assets/polaco3.png'
+import '../../styles/globals.css'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -22,6 +23,7 @@ function PlayerPanel() {
     gap={{base:2,md:4}}
     >
       <Text
+        className="player-number"
         fontFamily="heading"
         fontSize={{ base: '120px', md: '100px' }}
         ml={{ base: '-10px', md: 0 }}
@@ -125,9 +127,10 @@ export default function Hero() {
           zIndex={0}
           pointerEvents="none"
           backgroundImage={`url(${heroBg})`}
-          backgroundSize="cover"
-          backgroundPosition="center center"
+          backgroundSize={{ base: 'auto', md: 'cover' }}
+          backgroundPosition={"center top"}
           backgroundRepeat="no-repeat"
+          mt={{ base: 18, md: '0' }}
           opacity={{ base: 0.1, lg: 0.14 }}
           filter="grayscale(100%) contrast(1.05)"
           sx={{
@@ -163,6 +166,7 @@ export default function Hero() {
             style={{ clipPath: 'inset(100% 0 0 0)', opacity: 0 }}
           >
             <Image
+              className="player-photo"
               src={playerData.image}
               alt={`${playerData.displayName}, ${playerData.position.toLowerCase()} profesional de ${playerData.currentClub}`}
               h="100%"
