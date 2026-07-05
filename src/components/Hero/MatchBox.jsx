@@ -34,7 +34,7 @@ function MatchSlot({ data, label, labelColor }) {
       <Flex align="center" justify="space-between" gap={2}>
         <VStack spacing={1} align="center" flex={1}>
           <Shield src={home.shield} name={home.name} />
-          <Text fontFamily="mono" fontSize="9px" color="whiteAlpha.700" textTransform="uppercase"
+          <Text fontFamily="mono" fontSize="9px" color="brand.bone" textTransform="uppercase"
                 letterSpacing="wider" textAlign="center" noOfLines={1}>
             {home.name}
           </Text>
@@ -69,7 +69,7 @@ function MatchSlot({ data, label, labelColor }) {
 
         <VStack spacing={1} align="center" flex={1}>
           <Shield src={away.shield} name={away.name} />
-          <Text fontFamily="mono" fontSize="9px" color="whiteAlpha.700" textTransform="uppercase"
+          <Text fontFamily="mono" fontSize="9px" color="brand.bone" textTransform="uppercase"
                 letterSpacing="wider" textAlign="center" noOfLines={1}>
             {away.name}
           </Text>

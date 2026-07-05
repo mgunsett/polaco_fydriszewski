@@ -260,7 +260,7 @@ function ClubNode({ club, isFirst, isLast, isActive }) {
           left={isFirst ? '50%' : 0}
           right={isLast ? '50%' : 0}
           h="1px"
-          bg="whiteAlpha.200"
+          bg="brand.amberLight"
           transform="translateY(-50%)"
         />
         {/* Tramo recorrido (resaltado hacia el club actual) */}
@@ -271,7 +271,7 @@ function ClubNode({ club, isFirst, isLast, isActive }) {
             left="50%"
             right={0}
             h="1px"
-            bgGradient="linear(to-r, brand., transparent)"
+            bgGradient="linear(to-r, brand.brown, transparent)"
             transform="translateY(-50%)"
           />
         )}
@@ -284,15 +284,15 @@ function ClubNode({ club, isFirst, isLast, isActive }) {
           justify="center"
           position="relative"
           zIndex={1}
-          bg="brand.panel"
+          bg="brand.dark"
           border="1px solid"
-          borderColor={isActive ? 'brand.amberLight' : 'whiteAlpha.200'}
-          boxShadow={isActive ? '0 0 0 4px rgba(30,95,168,0.18), 0 0 26px rgba(30,95,168,0.35)' : 'none'}
+          borderColor={isActive ? 'brand.amber' : 'brand.amber2'}
+          boxShadow={isActive ? '0 0 0 4px #c23a3a7a, 0 0 26px #c23a3aa8' : 'none'}
           transition="border-color 0.35s, box-shadow 0.35s, transform 0.35s"
           _groupHover={{
             borderColor: 'brand.amberLight',
             transform: 'translateY(-4px)',
-            boxShadow: '0 0 0 4px rgba(151, 101, 103, 0.18), 0 0 26px rgba(97, 35, 35, 0.35)',
+            boxShadow: '0 0 0 4px #c23a3a4d, 0 0 26px #c23a3aa8',
           }}
         >
           <Image
@@ -314,9 +314,9 @@ function ClubNode({ club, isFirst, isLast, isActive }) {
         px={4}
         pt={5}
         pb={8}
-        bg="brand.panel"
+        bg="brand.dark"
         border="1px solid"
-        borderColor="whiteAlpha.100"
+        borderColor="brand.amber2"
         borderRadius="lg"
         textAlign="center"
         position="relative"
@@ -330,21 +330,21 @@ function ClubNode({ club, isFirst, isLast, isActive }) {
         _groupHover={{
           borderColor: 'brand.amberLight',
           transform: 'translateY(-4px)',
-          bg: 'rgba(30,95,168,0.04)',
+          bg: 'rgba(194, 58, 58, 0.04)',
           _before: { width: '40px' },
         }}
       >
         <Text
           fontFamily="mono"
           fontSize="10px"
-          color={isActive ? 'brand.brownLight' : 'brand.gray'}
+          color={isActive ? 'brand.rec' : 'brand.bone'}
           textTransform="uppercase"
           letterSpacing="0.2em"
-          _groupHover={{ color: 'brand.brownLight' }}
+          _groupHover={{ color: isActive ? 'brand.rec' : 'brand.rec' }}
         >
           {club.years}
         </Text>
-        <Text fontFamily="heading" fontSize="xl" color="white" lineHeight={1.05} mt={1}>
+        <Text fontFamily="heading" fontSize="xl" color="brand.boneWarm" lineHeight={1.05} mt={1}>
           {club.name}
         </Text>
         <Text

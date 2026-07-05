@@ -39,7 +39,7 @@ export default function Footer() {
     <Box
       ref={ref}
       as="footer"
-      bg="brand.darker"
+      bg="brand.dark2"
       py={16}
       px={{ base: 6, md: 12, lg: 20 }}
        sx={{
@@ -63,7 +63,7 @@ export default function Footer() {
             fontFamily="heading"
             fontSize="36px"
             letterSpacing="0.08em"
-            color="brand.amberLight"
+            color="brand.amber"
           >
             {playerData.initials}
             <Box as="span" color="brand.boneWarm" ml="1px">_</Box>
@@ -75,13 +75,13 @@ export default function Footer() {
           fontSize="12px"
           letterSpacing="0.12em"
           textTransform="uppercase"
-          color="brand.boneWarm "
+          color="brand.gray2"
           textAlign="center"
         >
           © 2026 {playerData.displayName} · Todos los derechos reservados
         </Text>
 
-        <Text fontSize="12px" color="brand.boneWarm" letterSpacing="0.05em">
+        <Text fontSize="12px" color="brand.gray2" letterSpacing="0.05em">
             Desarrollo Web -{' '}
             <Link
             href="https://matiasgunsett.netlify.app/"

@@ -6,9 +6,9 @@ import { IoMdStats } from 'react-icons/io'
 import polaco1 from '@assets/polaco1.png'
 import polaco2 from '@assets/polaco2.png'
 import argentina from '@assets/argentina.webp'
-import ind_medellin from '@assets/ind_medellin.png'
+import junior from '@assets/junior.webp'
 //Escudos trayectoria
-import escudoIndependiente from '@assets/ind_medellin.png'
+import escudoIndependiente from '@assets/escudos/escudo_indmedellin.webp'
 import escudoNewells from '@assets/escudos/escudo_newells.webp'
 import escudoSanlorenzo from '@assets/escudos/escudo_sanlorenzo.webp'
 import escudoBarcelona from '@assets/escudos/escudo_barcelona.webp'
@@ -57,8 +57,8 @@ export const playerData = {
   foot: 'Derecho',
   birthDate: '13 / 04 / 1993',
   birthPlace: 'Rosario, Argentina',
-  currentClub: 'Independiente Medellín',
-  logoCurrentClub: ind_medellin,
+  currentClub: 'Junior de Barranquilla',
+  logoCurrentClub: junior,
   image: polaco1,
   image2: polaco2,
 
@@ -83,9 +83,17 @@ export const playerData = {
 
   clubs: [
     {
+      name:    'Junior de Barranquilla',
+      country: 'Colombia',
+      years:   '2026 — Actualidad',
+      logo:    junior,
+      titles:  [],
+      info:    '',
+    },
+    {
       name:    'Independiente Medellín',
       country: 'Colombia',
-      years:   '2025 — Actualidad',
+      years:   '2025 — 2026',
       logo:    escudoIndependiente,
       titles:  [],
       info:    'Goleador del Torneo Finalización (12 goles)',

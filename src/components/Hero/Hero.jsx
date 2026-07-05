@@ -28,6 +28,7 @@ function PlayerPanel() {
         fontSize={{ base: '120px', md: '100px' }}
         ml={{ base: '-10px', md: 0 }}
         lineHeight={0.9}
+        borderColor={'brand.bone'}
         color="transparent"
         sx={{ WebkitTextStroke: `2px ${bone}` }}
       >
@@ -52,7 +53,7 @@ function PlayerPanel() {
           </Text>
         </Flex>
         <Flex justifyContent='flex-start' alignItems={'flex-end'} gap={{base:'8px',md:'10px'}} spacing={1} mt={'3px'} ml={-1}>
-          <Image src={playerData.logoCurrentClub} ml={{base:'2px',md:'none'}} w={{ base: '16px', md: '28px' }} h={{base:'20px',md:'28px'}} />
+          <Image src={playerData.logoCurrentClub} ml={{base:'2px',md:'none'}} w={{ base: '16px', md: '26px' }} h={{base:'20px',md:'30px'}} />
           <Text fontFamily="mono" fontSize={{base:'xs',md:"md"}} color="brand.boneWarm" letterSpacing="wider">
             {playerData.currentClub}
           </Text>

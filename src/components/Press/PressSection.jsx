@@ -59,7 +59,7 @@ function PressCard({ article, index }) {
         isExternal
         display="block"
         textDecoration="none"
-        bg="brand.panel"
+        bg="brand.dark"
         border="1px solid"
         borderColor="brand.amberLight"
         borderRadius="lg"
@@ -76,9 +76,9 @@ function PressCard({ article, index }) {
           _groupHover: { borderTopColor: accent },
         }}
         _groupHover={{
-          borderColor: 'brand.accent',
+          borderColor: 'brand.amber',
           transform: 'translateY(-4px)',
-          bg: 'brand.dark',
+          bg: 'rgba(194, 58, 58, 0.04)',
           _before: { width: '40px' },
           textDecoration: 'none',
         }}
@@ -88,14 +88,14 @@ function PressCard({ article, index }) {
             <Stars count={article.rating ?? 5} />
             <Box
               px={2.5} py={1}
-              bg="brand.panel"
+              bg="transparent"
               border="1px solid"
-              borderColor="brand.amberLight"
+              borderColor="brand.amber"
               borderRadius="sm"
               transition="border-color 0.35s, background 0.35s"
               _groupHover={{ borderColor: 'brand.accent', bg: 'brand.dark' }}
               >
-                <Text fontFamily="mono" fontSize="9px" color="brand.rec"
+                <Text fontFamily="mono" fontSize="9px" color="brand.amber"
                 textTransform="uppercase" letterSpacing="0.18em"
                 _groupHover={{ color: 'brand.boneWarm'}}
                 >
@@ -104,14 +104,14 @@ function PressCard({ article, index }) {
             </Box>
           </Flex>
 
-          <Text fontFamily="body" fontSize={{base:'xs',md:"md"}} color="boneWarm" lineHeight={1.55}>
+          <Text fontFamily="body" fontSize={{base:'xs',md:"md"}} color="brand.gray" lineHeight={1.55} _groupHover={{ color: 'brand.bone' }}>
             “{article.title}”
           </Text>
 
           <Text fontFamily="mono" fontSize="11px" color="brand.brownLight"
             textTransform="uppercase" letterSpacing="0.18em"
             transition="color 0.25s"
-            _groupHover={{ color: 'white' }}>
+            _groupHover={{ color: 'brand.rec' }}>
             Leer más →
           </Text>
         </VStack>

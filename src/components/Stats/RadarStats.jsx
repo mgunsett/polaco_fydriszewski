@@ -15,8 +15,8 @@ const R = 100 // ← tamaño del polígono (radio). Subilo/bajalo para agrandar 
 function RadarChart({ stats }) {
   const wrapRef = useRef(null)
   const N = stats.length
-  const [accent, brownLight, gray] = useToken('colors', [
-    'brand.accent', 'brand.brownLight', 'brand.gray',
+  const [accent, brownLight, gray, amber2] = useToken('colors', [
+    'brand.accent', 'brand.brownLight', 'brand.gray', 'brand.amber2'
   ])
 
   // Punto (x,y) para un valor 0-100 en el eje i
@@ -92,13 +92,13 @@ function RadarChart({ stats }) {
       >
         {gridRings.map((pts, i) => (
           <polygon key={i} points={pts} fill="none"
-            stroke={i === 3 ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.05)'}
+            stroke={i === 3 ? amber2 : '#993f3f17'} strokeWidth={i === 3 ? '1.5' : '1'}
           />
         ))}
         {stats.map((_, i) => {
           const [x, y] = pointFor(100, i)
           return <line key={i} x1={CX} y1={CY} x2={x} y2={y}
-            stroke="rgba(255,255,255,0.06)" />
+            stroke="#993f3f17" />
         })}
         <polygon
           className="radar-value"
@@ -161,7 +161,7 @@ function OverallRating({ value }) {
         fontFamily="mono"
         fontSize="10px" fontWeight="700"
         letterSpacing="0.3em" textTransform="uppercase"
-        color="brand.gray"
+        color="brand.amber"
       >
         Valoración General
       </Text>
@@ -199,11 +199,9 @@ function ColumnShell({ title, side = 'left', children }) {
         fontFamily="mono"
         fontSize="12px" fontWeight="700"
         letterSpacing="0.28em" textTransform="uppercase"
-        color="brand.boneWarm"
+        color="brand.amber"
         mb={{ base: 4, lg: 5 }}
         pb={2}
-        borderBottom="1px solid"
-        borderColor="brand.boneWarm"
       >
         {title}
       </Text>
@@ -225,9 +223,9 @@ function ProfileColumn({ items }) {
           gap={4}
           py={{ base: 2.5, lg: 2.5 }}
           borderBottom={i === items.length - 1 ? 'none' : '1px solid'}
-          borderColor="whiteAlpha.50"
+          borderColor="brand.amber2"
           transition="border-color 0.3s"
-          _hover={{ borderColor: 'brand.brownLight' }}
+          _hover={{ borderColor: 'brand.amber' }}
         >
           <Text
             fontFamily="mono"
@@ -267,15 +265,15 @@ function SeasonColumn({ items }) {
           key={item.label}
           className="radar-side-row"
           border="1px solid"
-          borderColor="whiteAlpha.100"
+          borderColor="brand.amber2"
           borderRadius="10px"
           p={{ base: 3, lg: 3.5 }}
           bg="brand.dark"
           transition="border-color 0.3s, background 0.3s, transform 0.3s"
           role="group"
           _hover={{
-            borderColor: 'brand.amberLight',
-            bg: 'rgba(30,95,168,0.07)',
+            borderColor: 'brand.amber',
+            bg: 'rgba(194, 58, 58, 0.04)',
             transform: 'translateY(-2px)',
           }}
         >
@@ -294,7 +292,7 @@ function SeasonColumn({ items }) {
             color="brand.gray"
             mt={1.5}
             lineHeight="1.2"
-            _groupHover={{ color: 'brand.boneWarm' }}
+            _groupHover={{ color: 'brand.rec' }}
           >
             {item.label}
           </Text>
@@ -322,9 +320,9 @@ export function RadarStats() {
 
   return (
     <Box
-      bg="brand.panel"
+      bg="transparent"
       border="1px solid"
-      borderColor="brand.amberLight"
+      borderColor="brand.amber"
       borderRadius="14px"
       p={{ base: 6, md: 10, lg: 12 }}
       position="relative"
@@ -338,7 +336,7 @@ export function RadarStats() {
         <Box
           order={{ base: 2, md: 1, lg: 1 }}
           borderRight={{ lg: '1px solid' }}
-          borderColor="brand.amberLight !important"
+          borderColor="brand.amber !important"
           pr={{ base: 0, lg: 10 }}
         >
           <ColumnShell title="Perfil" side="left">
@@ -362,10 +360,10 @@ export function RadarStats() {
         <Box
           order={{ base: 3, md: 2, lg: 3 }}
           borderLeft={{ lg: '1px solid' }}
-          borderColor="brand.amberLight !important"
+          borderColor="brand.amber !important"
           pl={{ base: 0, lg: 10 }}
         >
-          <ColumnShell title="Temporada Actual" side="right">
+          <ColumnShell title="Última Temporada" side="right">
             <SeasonColumn items={playerData.seasonStats} />
           </ColumnShell>
         </Box>

@@ -16,9 +16,9 @@ function SocialCard({ item }) {
       rel="noopener noreferrer"
       position="relative"
       overflow="hidden"
-      bg="rgba(255,255,255,0.02)"
+      bg="brand.dark"
       border="1px solid"
-      borderColor="whiteAlpha.100"
+      borderColor="brand.amber2"
       borderRadius={'10px'}
       p={{ base: 6, md: 8 }}
       transition="all 0.3s ease"
@@ -26,7 +26,7 @@ function SocialCard({ item }) {
       _hover={{
         transform: 'translateY(-3px)',
           borderColor: 'brand.amber',
-          bg: 'brand.dark'
+          bg: 'rgba(194, 58, 58, 0.04)'
       }}
     >
       {/* watermark gigante */}
@@ -34,7 +34,7 @@ function SocialCard({ item }) {
         position="absolute"
         right="-10px"
         bottom="-40px"
-        opacity={0.05}
+        opacity={0.2}
         transition="all 0.4s ease"
         _groupHover={{ opacity: 0.18, color: (item.hoverColor) }}
         color="white"
@@ -74,12 +74,13 @@ function SocialCard({ item }) {
           fontSize="10px"
           letterSpacing="0.24em"
           textTransform="uppercase"
-          color="whiteAlpha.500"
+          color="brand.gray"
           mb={1}
+          _groupHover={{ color: 'brand.rec' }}
         >
           {item.label}
         </Text>
-        <Text fontFamily="heading" fontSize={{base:'xl',md:"2xl"}}>
+        <Text fontFamily="heading" color={'brand.brownLight'} fontSize={{base:'xl',md:"2xl"}}>
           {item.handle}
         </Text>
       </Box>
@@ -98,9 +99,9 @@ function ContactRow({ item, gold }) {
       display="block"
       bg="rgba(255,255,255,0.02)"
       border="1px solid"
-      borderColor="whiteAlpha.100"
+      borderColor={gold ? 'brand.orangeLight' : 'brand.brownLight'}
       borderRadius='10px'
-      borderLeftColor= {gold ? 'brand.orange' : 'brand.accent'}
+      borderLeftColor= {gold ? 'brand.orangeLight' : 'brand.accent'}
       borderLeftWidth= '4px'
       borderLeftStyle= 'solid'
       p={{ base: 5, md: 8 }}
@@ -108,7 +109,8 @@ function ContactRow({ item, gold }) {
       role="group"
       _hover={{
         transform: 'translateY(-3px)',
-        borderColor: gold ? 'brand.orange' : 'brand.accent',
+        borderColor: gold ? 'brand.orangeLight' : 'brand.accent',
+        bg: gold ? 'rgba(163,107,44,0.04)' : 'rgba(30,95,168,0.04)',
       }}
     >
       <Flex align="center" gap={4}>
@@ -133,7 +135,7 @@ function ContactRow({ item, gold }) {
             filter="brightness(0.3)"
             transition="all 0.3s ease"
             _groupHover={{ 
-              filter: 'brightness(0.9)',
+              filter: 'brightness(0.98)',
              }}
              />
           </Box>
@@ -144,11 +146,12 @@ function ContactRow({ item, gold }) {
             fontSize="10px"
             letterSpacing="0.24em"
             textTransform="uppercase"
-            color="whiteAlpha.500"
+            color="brand.gray"
+            _groupHover={{ color: 'brand.rec' }}
           >
             {item.label}
           </Text>
-          <Text fontFamily="heading" fontSize="2xl" fontWeight={500}>
+          <Text fontFamily="heading" fontSize="2xl" color="brand.brownLight" fontWeight={500}>
             {item.handle}
           </Text>
         </Box>
@@ -188,14 +191,12 @@ export function ContactSection() {
       id="contact"
       ref={sectionRef}
       position="relative"
-      bg="brand.deep"
+      bg="brand.dark"
       px={{ base: 6, md: 12, lg: 20 }}
       py={{ base: 20, md: 28 }}
       overflow="hidden"
     >
       <Box className="deco-grid" />
-
-    
 
       <Box position="relative" zIndex={1} maxW="1400px" mx="auto">
         {/* Header */}
@@ -267,7 +268,7 @@ export function ContactSection() {
                 fontSize="11px"
                 letterSpacing="0.28em"
                 textTransform="uppercase"
-                color="brand.orangeLight"
+                color="brand.boneWarm"
                 mb={5}
           >
             Representante de marketing

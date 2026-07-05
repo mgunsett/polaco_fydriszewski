@@ -110,9 +110,9 @@ function GalleryCard({ photo, offset, abs, cardW, spacing, total, index, onFocus
         overflow="hidden"
         borderRadius={{ base: '18px', md: '10px' }}
         border="1px solid"
-        borderColor={isCenter ? 'brand.amberLight' : 'whiteAlpha.100'}
+        borderColor={isCenter ? 'brand.amber' : 'brand.amber2'}
         boxShadow={isCenter
-          ? '0 40px 90px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05)'
+          ? ' -1px 12px 19px 0px rgba(0,0,0,0.75)'
           : '0 24px 60px rgba(0,0,0,0.45)'}
         transition="border-color 0.4s"
       >
@@ -174,7 +174,7 @@ function GalleryCard({ photo, offset, abs, cardW, spacing, total, index, onFocus
           letterSpacing="wider"
           cursor="pointer"
           onClick={(e) => handleLink(e, '#hero')}
-          color="brand.amberLight"
+          color="brand.amber"
           _hover={{ color: 'brand.amberLight' }}
           transition="color 0.2s"
         >
@@ -369,7 +369,7 @@ export default function GallerySection() {
             boxSize="44px" flexShrink={0}
             display="flex" alignItems="center" justifyContent="center"
             border="1px solid" borderColor="brand.amberLight" borderRadius="full"
-            color="whiteAlpha.800" transition="all 0.25s" 
+            color="brand.brownLight" transition="all 0.25s" 
             _hover={{ bg: 'brand.rec', borderColor: 'brand.amberLight  ', color: 'white' }}
             _active={{ transform: 'scale(0.92)' }}
           >
@@ -412,7 +412,7 @@ export default function GallerySection() {
             boxSize="44px" flexShrink={0}
             display="flex" alignItems="center" justifyContent="center"
             border="1px solid" borderColor="brand.amberLight" borderRadius="full"
-            color="whiteAlpha.800" transition="all 0.25s"
+            color="brand.brownLight" transition="all 0.25s"
             _hover={{ bg: 'brand.rec', borderColor: 'brand.amberLight', color: 'white' }}
             _active={{ transform: 'scale(0.92)' }}
           >

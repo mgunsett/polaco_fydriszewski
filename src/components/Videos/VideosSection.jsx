@@ -145,13 +145,13 @@ export default function VideosSection() {
         top={{ base: '10%', md: '12%' }}
         right={{ base: '-6%', md: '2%' }}
         fontFamily="heading"
-        fontSize={{ base: '60vw', md: '30vw' }}
+        fontSize={{ base: '60vw', md: '40vw' }}
         lineHeight={0.8}
         color="transparent"
         pointerEvents="none"
         userSelect="none"
         zIndex={0}
-        sx={{ WebkitTextStroke: '1.5px #91313167' }}
+        sx={{ WebkitTextStroke: `1.5px #4d94d650` }}
       >
         {playerData.number}
       </Text> 
@@ -189,7 +189,7 @@ export default function VideosSection() {
               fontSize="11px"
               letterSpacing="0.4em"
               textTransform="uppercase"
-              color="whiteAlpha.500"
+              color="brand.boneWarm"
               sx={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
             >
               {video.season} — {playerData.name} {playerData.fullName}
@@ -299,7 +299,7 @@ export default function VideosSection() {
                   position="absolute"
                   top={{ base: 4, md: 6 }}
                   left={{ base: 4, md: 6 }}
-                  align="center"
+                  align="center"  
                   gap={2}
                   bg="rgba(5,11,20,0.55)"
                   backdropFilter="blur(6px)"
@@ -372,7 +372,7 @@ export default function VideosSection() {
                   transition="opacity 0.45s ease 0.05s, transform 0.45s cubic-bezier(0.22,1,0.36,1) 0.05s"
                   pointerEvents="none"
                 >
-                  <Text fontFamily="mono" fontSize={{base:'8px',md:"10px"}} letterSpacing="0.28em" textTransform="uppercase" color="brand.brownLight" mb={1}>
+                  <Text fontFamily="mono" fontSize={{base:'8px',md:"10px"}} letterSpacing="0.28em" textTransform="uppercase" color="brand.rec" mb={1}>
                     Jugadas destacadas
                   </Text>
                   <Text fontFamily="heading" fontSize={{ base: '3xl', md: '4xl' }} lineHeight={1} color="white" letterSpacing="0.01em" noOfLines={1}>
@@ -406,7 +406,7 @@ export default function VideosSection() {
             flexShrink={0}
             role="group"
             alignSelf={{ base: 'flex-end', md: 'auto' }}
-            color="whiteAlpha.800"
+            color="brand.gray"
             transition="color 0.3s ease"
             _hover={{ color: 'brand.brownLight' }}
           >

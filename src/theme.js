@@ -2,20 +2,24 @@ import { extendTheme } from '@chakra-ui/react'
 
 // Paleta de marca — fuente única de verdad para los colores del proyecto
 const brand = {
-  brown:      '#103055', // azul principal
+  brown:      '#2c5380', // azul principal
   brownDark:  '#0B2A4A', // azul profundo
   brownLight: '#4D93D6', // azul claro
-  amber:      '#913131', // detalle rojizo/dorado
+  amber:      '#c23a3a', // detalle rojizo/dorado
+  amber2:     '#993f3f8e',
   amberDark:  '#7A1F1F', // detalle rojizo/dorado oscuro
-  amberLight: '#913131ad', // detalle rojizo/dorado claro
+  amberLight: '#913131d3', // detalle rojizo/dorado claro
   dorado:     '#c0ab32', // dorado
   orange:     '#a36b2c', // naranja (hover de botones)
   orangeDark: '#7a4e1f', // naranja oscuro (hover de botones)
   orangeLight:'#c08b4a', // naranja claro (hover de botones)
-  dark:       '#050B14', // azul casi negro (fondo)
+  dark:       '#cfcfcf', // azul casi negro (fondo)
+  dark3:       '#c4c0bb',
+  dark2:       '#a5a4a4',
   gray:       '#7A8CA3', // azul grisáceo (texto secundario)
+  gray2:      '#f2f6fad2',
   bone:       '#FFFFFF', // blanco (texto principal)
-  boneWarm:   '#E6EEF7', // blanco azulado (detalles)
+  boneWarm:   '#3083e2', // blanco azulado (detalles)
   accent:     '#1E5FA8', // azul de acento (glows, scrollbar, gradientes)
   accentMid:  '#1460B1', // azul medio (gradiente de barras)
   accentDeep: '#0B478B', // azul profundo (gradiente de barras)

@@ -75,7 +75,7 @@ export default function Navbar() {
         borderRadius={{ base: '18px', lg: '10px' }}
         border="1px solid"
         borderColor={'brand.amberLight'}
-        bg={scrolled ? 'rgba(5,11,20,0.55)' : 'brand.dark'}
+        bg={scrolled ? 'rgba(135, 147, 165, 0.55)' : 'transparent'}
         backdropFilter="blur(20px) saturate(140%)"
         boxShadow={scrolled
           ? '0 10px 34px rgba(0,0,0,0.40)'
@@ -87,7 +87,7 @@ export default function Navbar() {
           fontFamily="heading"
           fontSize="2xl"
           letterSpacing="wider"
-          color="brand.amberLight"
+          color="brand.amber"
           cursor="pointer"
           onClick={(e) => handleLink(e, '#hero')}
           _hover={{ color: 'brand.brown' }}
@@ -113,7 +113,7 @@ export default function Navbar() {
               fontWeight="500"
               letterSpacing="wider"
               textTransform="uppercase"
-              color="brand.boneWarm"
+              color="brand.brown"
               cursor="pointer"
               transition="color 0.25s"
               _before={{
@@ -148,16 +148,16 @@ export default function Navbar() {
           display={{ base: 'none', lg: 'block' }}
           px={'10px'}
           py={'5px'}
-          bg="brand.amberLight"
+          bg="brand.brown"
           border="1px solid"
-          borderColor= 'brand.rec'
+          borderColor= 'brand.amberLight'
           borderRadius={'5px'}
           fontFamily="mono"
           fontSize="2xs"
           fontWeight="600"
           letterSpacing="wider"
           textTransform="uppercase"
-          color="brand.boneWarm"
+          color="brand.bone"
           cursor="pointer"
           transition="all 0.2s"
           _hover={{ bg: 'brand.brown', color: 'white' }}
