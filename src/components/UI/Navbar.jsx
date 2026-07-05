@@ -11,7 +11,12 @@ const navLinks = [
   { label: 'Estadísticas', href: '#estadisticas' },
   { label: 'Videos',       href: '#videos' },
   { label: 'Galería',      href: '#galeria' },
-  { label: 'Prensa',       href: '#prensa' },,
+  { label: 'Prensa',       href: '#prensa' },
+]
+
+const mobileLinks = [
+  ...navLinks,
+  { label: 'Contacto', href: '#contact' },
 ]
 
 function scrollTo(href) {
@@ -208,7 +213,7 @@ export default function Navbar() {
             overflow="hidden"
           >
             <VStack align="stretch" spacing={0} py={2} px={2}>
-              {navLinks.map((link, i) => (
+              {mobileLinks.map((link, i) => (
                 <MotionBox
                   key={link.href}
                   initial={{ opacity: 0, x: -16 }}
@@ -216,17 +221,12 @@ export default function Navbar() {
                   transition={{ delay: i * 0.06 }}
                   w="full"
                 >
-                  <Text
+                  <Flex
                     as="a"
                     href={link.href}
                     onClick={(e) => handleLink(e, link.href)}
-                    display="block"
-                    fontFamily="mono"
-                    fontSize="lg"
-                    fontWeight="600"
-                    letterSpacing="wider"
-                    textTransform="uppercase"
-                    color="whiteAlpha.800"
+                    align="center"
+                    gap={3}
                     py={3}
                     px={3}
                     borderRadius="12px"
@@ -234,8 +234,27 @@ export default function Navbar() {
                     transition="color 0.2s, background 0.2s"
                     cursor="pointer"
                   >
-                    {link.label}
-                  </Text>
+                    <Text
+                      as="span"
+                      fontFamily="mono"
+                      fontSize="2xs"
+                      fontWeight="600"
+                      letterSpacing="wider"
+                      color="brand.amberLight"
+                    >
+                      {String(i + 1).padStart(2, '0')}
+                    </Text>
+                    <Text
+                      fontFamily="mono"
+                      fontSize="lg"
+                      fontWeight="600"
+                      letterSpacing="wider"
+                      textTransform="uppercase"
+                      color="whiteAlpha.800"
+                    >
+                      {link.label}
+                    </Text>
+                  </Flex>
                 </MotionBox>
               ))}
             </VStack>

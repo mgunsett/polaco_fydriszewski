@@ -145,7 +145,7 @@ export default function VideosSection() {
         top={{ base: '10%', md: '12%' }}
         right={{ base: '-6%', md: '2%' }}
         fontFamily="heading"
-        fontSize={{ base: '40vw', md: '30vw' }}
+        fontSize={{ base: '60vw', md: '30vw' }}
         lineHeight={0.8}
         color="transparent"
         pointerEvents="none"

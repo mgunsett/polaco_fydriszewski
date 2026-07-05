@@ -23,7 +23,8 @@ function PlayerPanel() {
     >
       <Text
         fontFamily="heading"
-        fontSize={{ base: '70px', md: '100px' }}
+        fontSize={{ base: '120px', md: '100px' }}
+        ml={{ base: '-10px', md: 0 }}
         lineHeight={0.9}
         color="transparent"
         sx={{ WebkitTextStroke: `2px ${bone}` }}
@@ -125,7 +126,7 @@ export default function Hero() {
           pointerEvents="none"
           backgroundImage={`url(${heroBg})`}
           backgroundSize="cover"
-          backgroundPosition="center top"
+          backgroundPosition="center center"
           backgroundRepeat="no-repeat"
           opacity={{ base: 0.1, lg: 0.14 }}
           filter="grayscale(100%) contrast(1.05)"
@@ -146,26 +147,26 @@ export default function Hero() {
           display="flex"
           alignItems="flex-end"
           justifyContent={{ base: 'center', lg: 'center' }}
-          pl={{ base: 0, lg: '55%' }}
+          pl={{ base: '30%', lg: '55%' }}
           pointerEvents="none"
         >
           <Box
             ref={photoRef}
             h={{ base: '78vh', lg: '94vh' }}
-            sx={{
-              // dvh evita el salto al colapsar la barra del navegador en mobile; vh queda de fallback
-              '@supports (height: 100dvh)': {
-                height: '78dvh',
-                '@media (min-width: 62em)': { height: '94dvh' },
-              },
-            }}
+            // sx={{
+            //   // dvh evita el salto al colapsar la barra del navegador en mobile; vh queda de fallback
+            //   '@supports (height: 100dvh)': {
+            //     height: '78dvh',
+            //     '@media (min-width: 62em)': { height: '94dvh' },
+            //   },
+            // }}
             style={{ clipPath: 'inset(100% 0 0 0)', opacity: 0 }}
           >
             <Image
               src={playerData.image}
               alt={`${playerData.displayName}, ${playerData.position.toLowerCase()} profesional de ${playerData.currentClub}`}
               h="100%"
-              w={{ base: '95vw', lg: '360px' }}
+              w={{ base: '68vw', lg: '360px' }}
               objectFit="contain"
               objectPosition="bottom center"
               draggable={false}
@@ -184,7 +185,7 @@ export default function Hero() {
           alignItems={{ base: 'center', lg: 'flex-start' }}
           justifyContent={{ base: 'flex-start', lg: 'flex-start' }}
           pl={{ base: 0, lg: '10%' }}
-          pt={{ base: '40%', lg: '6%' }}
+          pt={{ base: '12%', lg: '6%' }}
         >
           <Box as="h1" overflow="hidden">
             <Text
@@ -206,7 +207,7 @@ export default function Hero() {
               as="span"
               display="block"
               fontFamily="heading"
-              fontSize={{ base: '34vw', md: '16vw', lg: '13vw' }}
+              fontSize={{ base: '22vw', md: '16vw', lg: '13vw' }}
               color="brand.brown"
               lineHeight={0.9}
               style={{ opacity: 0 }}
@@ -219,7 +220,7 @@ export default function Hero() {
         {/* Player info — bottom left */}
         <Box
           position="absolute"
-          bottom={{ base: '26%', lg: '25%' }}
+          bottom={{ base: '42%', lg: '25%' }}
           left={{ base: '5%', lg: '10.3%' }}
           zIndex={15}
         >
