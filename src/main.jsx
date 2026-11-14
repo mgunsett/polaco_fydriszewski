@@ -10,6 +10,8 @@ import App from './App'
 import './styles/globals.css'
 
 gsap.registerPlugin(ScrollTrigger)
+// En mobile la barra del navegador cambia el alto al scrollear: no recalcular por eso
+ScrollTrigger.config({ ignoreMobileResize: true })
 
 const lenis = new Lenis({
   duration:       1.2,

@@ -1,266 +1,316 @@
 import { useState, useEffect, useRef } from 'react'
-import { Box, Flex, Text, HStack, VStack } from '@chakra-ui/react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { gsap } from 'gsap'
+import { Box, Flex, Text, Grid, Icon } from '@chakra-ui/react'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { playerData } from '../../data/playerData'
 
+// Navbar "Portada": línea fina a todo el ancho, punto rojo en la sección activa
+// y barra roja de progreso de lectura. En mobile, menú a pantalla completa.
+
 const MotionBox = motion(Box)
+const MotionA = motion.a
+const EASE = [0.23, 1, 0.32, 1]
 
 const navLinks = [
-  { label: 'Home', href: '#hero'},
+  { label: 'Inicio',       href: '#hero' },
   { label: 'Estadísticas', href: '#estadisticas' },
   { label: 'Videos',       href: '#videos' },
   { label: 'Galería',      href: '#galeria' },
   { label: 'Prensa',       href: '#prensa' },
 ]
+const CONTACT = { label: 'Contacto', href: '#contact' }
+const instagram = playerData.socialMedia.find((s) => s.label === 'Instagram')
 
-const mobileLinks = [
-  ...navLinks,
-  { label: 'Contacto', href: '#contact' },
-]
+const hoverOnly = (styles) => ({ '@media (hover: hover) and (pointer: fine)': { '&:hover': styles } })
 
 function scrollTo(href) {
   const target = document.querySelector(href)
   if (!target) return
-  if (window.__lenis) {
-    window.__lenis.scrollTo(target, { offset: -20 })
-  } else {
-    target.scrollIntoView({ behavior: 'smooth' })
-  }
+  if (window.__lenis) window.__lenis.scrollTo(target, { offset: -20 })
+  else target.scrollIntoView({ behavior: 'smooth' })
+}
+
+// Sección visible ahora, para marcar el link activo
+function useActiveSection() {
+  const [active, setActive] = useState('#hero')
+  useEffect(() => {
+    const ids = [...navLinks, CONTACT].map((l) => l.href)
+    const els = ids.map((id) => document.querySelector(id)).filter(Boolean)
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.isIntersecting && setActive(`#${e.target.id}`)),
+      { rootMargin: '-45% 0px -50% 0px' },
+    )
+    els.forEach((el) => io.observe(el))
+    return () => io.disconnect()
+  }, [])
+  return active
 }
 
 export default function Navbar() {
-  const [scrolled, setScrolled]   = useState(false)
-  const [menuOpen, setMenuOpen]   = useState(false)
-  const navRef                    = useRef(null)
+  const [scrolled, setScrolled] = useState(false)
+  const [open, setOpen] = useState(false)
+  const progressRef = useRef(null)
+  const active = useActiveSection()
+  const reduce = useReducedMotion()
 
   useEffect(() => {
-    gsap.fromTo(navRef.current,
-      { y: -60, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.9, ease: 'expo.out', delay: 0.5 }
-    )
+    const onScroll = () => {
+      const y = window.scrollY
+      setScrolled(y > 40)
+      const max = document.documentElement.scrollHeight - window.innerHeight
+      if (progressRef.current) progressRef.current.style.transform = `scaleX(${max > 0 ? y / max : 0})`
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // Con el menú abierto no se scrollea la página de fondo
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 80)
-    window.addEventListener('scroll', handler, { passive: true })
-    return () => window.removeEventListener('scroll', handler)
-  }, [])
+    if (open) window.__lenis?.stop()
+    else window.__lenis?.start()
+    document.body.style.overflow = open ? 'hidden' : ''
+    const onKey = (e) => e.key === 'Escape' && setOpen(false)
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [open])
 
-  const handleLink = (e, href) => {
+  const go = (e, href) => {
     e.preventDefault()
-    setMenuOpen(false)
-    scrollTo(href)
+    setOpen(false)
+    // esperar a que se reactive Lenis antes de scrollear
+    requestAnimationFrame(() => scrollTo(href))
+  }
+
+  const linkStyle = {
+    fontFamily: 'mono',
+    fontSize: '14px',
+    letterSpacing: '0.16em',
+    textTransform: 'uppercase',
+    transition: 'color 0.2s',
   }
 
   return (
-    <Box
-      ref={navRef}
+    <MotionBox
       as="nav"
+      aria-label="Principal"
       position="fixed"
-      top={{ base: 3, lg: 2  }}
-      left={0}
-      right={0}
+      top={0}
+      insetX={0}
       zIndex={1000}
-      px={{ base: 4, lg: 4 }}
-      style={{ opacity: 0 }}
+      pt="env(safe-area-inset-top, 0px)"
+      bg={scrolled && !open ? 'rgba(10,18,32,0.86)' : 'transparent'}
+      backdropFilter={scrolled && !open ? 'blur(16px)' : 'none'}
+      sx={{ transitionProperty: 'background', transitionDuration: '0.35s' }}
+      initial={reduce ? false : { opacity: 0, y: -24 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.9, ease: EASE, delay: 0.3 }}
     >
-      <Flex
-        align="center"
-        justify="space-between"
-        maxW="1100px"
-        mx="auto"
-        px={{ base: 4, lg: 7 }}
-        py={{ base: 1.5, lg: 1 }}
-        borderRadius={{ base: '18px', lg: '10px' }}
-        border="1px solid"
-        borderColor={'brand.amberLight'}
-        bg={scrolled ? 'rgba(135, 147, 165, 0.55)' : 'transparent'}
-        backdropFilter="blur(20px) saturate(140%)"
-        boxShadow={scrolled
-          ? '0 10px 34px rgba(0,0,0,0.40)'
-          : '0 6px 26px rgba(0,0,0,0.22)'}
-        transition="background 0.35s, border-color 0.35s, box-shadow 0.35s"
+      <Grid
+        position="relative"
+        templateColumns={{ base: '1fr auto', lg: '1fr auto 1fr' }}
+        alignItems="center"
+        h="68px"
+        px="max(16px, 4vw)"
+        borderBottom="1px solid"
+        borderColor="brand.line"
       >
-        {/* Logo */}
+        {/* Nombre */}
         <Text
+          as="a"
+          href="#hero"
+          onClick={(e) => go(e, '#hero')}
           fontFamily="heading"
-          fontSize="2xl"
-          letterSpacing="wider"
-          color="brand.amber"
-          cursor="pointer"
-          onClick={(e) => handleLink(e, '#hero')}
-          _hover={{ color: 'brand.brown' }}
-          transition="color 0.2s"
+          fontSize="22px"
+          letterSpacing="0.08em"
+          lineHeight={1}
+          whiteSpace="nowrap"
+          color="brand.cream"
+          w="fit-content"
         >
-          {playerData.initials}<Box as="span" color="brand.boneWarm">_</Box>
+          {playerData.name}{' '}
+          <Box as="span" color="brand.red">{playerData.fullName}</Box>
         </Text>
 
-        {/* Desktop links */}
-        <HStack spacing={1} display={{ base: 'none', lg: 'flex' }}>
-          {navLinks.map((link) => (
-            <Text
-              key={link.href}
-              as="a"
-              href={link.href}
-              onClick={(e) => handleLink(e, link.href)}
-              position="relative"
-              px={4}
-              py={2}
-              borderRadius="10px"
-              fontFamily="mono"
-              fontSize="2xs"
-              fontWeight="500"
-              letterSpacing="wider"
-              textTransform="uppercase"
-              color="brand.brown"
-              cursor="pointer"
-              transition="color 0.25s"
-              _before={{
-                content: '""',
-                position: 'absolute',
-                inset: 0,
-                borderRadius: '10px',
-                bg: 'linear-gradient(135deg, rgba(77,147,214,0.22) 0%, rgba(30,95,168,0.10) 100%)',
-                opacity: 0,
-                transform: 'scale(0.92)',
-                transition: 'opacity 0.25s, transform 0.25s',
-                pointerEvents: 'none',
-              }}   
-              _hover={{
-                color: 'white',
-                _before: { opacity: 1, transform: 'scale(1)' },
-                _after: { width: '40%' },
-              }}
-            >
-              <Box as="span" position="relative" zIndex={1}>
-                {link.label}
-              </Box>
-            </Text>
-          ))}
-        </HStack>
-
-        {/* CTA desktop */}
-        <Box
-          as="a"
-          href="#contact"
-          onClick={(e) => handleLink(e, '#contact')}
-          display={{ base: 'none', lg: 'block' }}
-          px={'10px'}
-          py={'5px'}
-          bg="brand.brown"
-          border="1px solid"
-          borderColor= 'brand.amberLight'
-          borderRadius={'5px'}
-          fontFamily="mono"
-          fontSize="2xs"
-          fontWeight="600"
-          letterSpacing="wider"
-          textTransform="uppercase"
-          color="brand.bone"
-          cursor="pointer"
-          transition="all 0.2s"
-          _hover={{ bg: 'brand.brown', color: 'white' }}
-        >
-          Contacto
-        </Box>
-
-        {/* Hamburger mobile */}
-        <Box
-          display={{ base: 'flex', lg: 'none' }}
-          flexDir="column"
-          gap="5px"
-          cursor="pointer"
-          onClick={() => setMenuOpen(!menuOpen)}
-          p={2}
-        >
-          {[0, 1, 2].map((i) => (
-            <Box
-              key={i}
-              w="22px"
-              h="1.5px"
-              bg="white"
-              transition="all 0.25s"
-              transform={
-                menuOpen
-                  ? i === 0 ? 'rotate(45deg) translate(4.5px, 4.5px)'
-                  : i === 1 ? 'scaleX(0)'
-                  : 'rotate(-45deg) translate(4.5px, -4.5px)'
-                  : 'none'
-              }
-            />
-          ))}
-        </Box>
-      </Flex>
-
-      {/* Mobile menu */}
-      <AnimatePresence>
-        {menuOpen && (
-          <MotionBox
-            initial={{ opacity: 0, y: -12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            display={{ base: 'block', lg: 'none' }}
-            maxW="1400px"
-            mx="auto"
-            mt={3}
-            borderRadius="18px"
-            border="1px solid rgba(255,255,255,0.12)"
-            bg="rgba(5,11,20,0.65)"
-            backdropFilter="blur(20px) saturate(140%)"
-            boxShadow="0 10px 34px rgba(0,0,0,0.40)"
-            overflow="hidden"
-          >
-            <VStack align="stretch" spacing={0} py={2} px={2}>
-              {mobileLinks.map((link, i) => (
-                <MotionBox
-                  key={link.href}
-                  initial={{ opacity: 0, x: -16 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.06 }}
-                  w="full"
+        {/* Links desktop */}
+        <Flex as="ul" listStyleType="none" gap="30px" display={{ base: 'none', lg: 'flex' }}>
+          {navLinks.map((l) => {
+            const current = active === l.href
+            return (
+              <li key={l.href}>
+                <Text
+                  as="a"
+                  href={l.href}
+                  onClick={(e) => go(e, l.href)}
+                  aria-current={current ? 'true' : undefined}
+                  position="relative"
+                  display="block"
+                  py="8px"
+                  fontWeight="500"
+                  color={current ? 'brand.cream' : 'brand.mist'}
+                  {...linkStyle}
+                  _before={{
+                    content: '""',
+                    position: 'absolute',
+                    left: '50%',
+                    top: '-4px',
+                    w: '5px',
+                    h: '5px',
+                    ml: '-2.5px',
+                    borderRadius: 'full',
+                    bg: 'brand.red',
+                    opacity: current ? 1 : 0,
+                    transform: current ? 'scale(1)' : 'scale(0)',
+                    transition: 'opacity 0.3s, transform 0.3s cubic-bezier(0.23,1,0.32,1)',
+                  }}
+                  sx={hoverOnly({ color: 'brand.cream' })}
                 >
-                  <Flex
-                    as="a"
-                    href={link.href}
-                    onClick={(e) => handleLink(e, link.href)}
-                    align="center"
-                    gap={3}
-                    py={3}
-                    px={3}
-                    borderRadius="12px"
-                    _hover={{ color: 'brand.brown', bg: 'whiteAlpha.50' }}
-                    transition="color 0.2s, background 0.2s"
-                    cursor="pointer"
+                  {l.label}
+                </Text>
+              </li>
+            )
+          })}
+        </Flex>
+
+        {/* Derecha */}
+        <Flex justify="flex-end" align="center" gap="20px">
+          {instagram && (
+            <Flex
+              as="a"
+              href={instagram.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Instagram de ${playerData.nickname}`}
+              display={{ base: 'none', lg: 'grid' }}
+              placeItems="center"
+              w="36px"
+              h="36px"
+              borderRadius="full"
+              border="1px solid"
+              borderColor="brand.line"
+              color="brand.cream"
+              transition="border-color 0.2s, color 0.2s"
+              sx={hoverOnly({ borderColor: 'brand.red', color: 'brand.redSoft' })}
+            >
+              <Icon as={instagram.icon} boxSize="15px" />
+            </Flex>
+          )}
+          <Text
+            as="a"
+            href={CONTACT.href}
+            onClick={(e) => go(e, CONTACT.href)}
+            display={{ base: 'none', lg: 'block' }}
+            py="9px"
+            fontWeight="700"
+            color="brand.cream"
+            borderBottom="2px solid"
+            borderColor="brand.red"
+            {...linkStyle}
+            sx={hoverOnly({ color: 'brand.redSoft' })}
+          >
+            {CONTACT.label}
+          </Text>
+
+          {/* Botón menú mobile */}
+          <Flex
+            as="button"
+            type="button"
+            onClick={() => setOpen((o) => !o)}
+            aria-expanded={open}
+            aria-controls="menu-mobile"
+            display={{ base: 'flex', lg: 'none' }}
+            align="center"
+            gap="10px"
+            py="10px"
+            pl="12px"
+            fontFamily="mono"
+            fontWeight="700"
+            fontSize="14px"
+            letterSpacing="0.2em"
+            textTransform="uppercase"
+            color="brand.cream"
+          >
+            {open ? 'Cerrar' : 'Menú'}
+            <Box
+              as="i"
+              w="18px"
+              h="2px"
+              bg="brand.red"
+              transition="transform 0.3s cubic-bezier(0.23,1,0.32,1), box-shadow 0.3s"
+              boxShadow={open ? '0 0 0 var(--chakra-colors-brand-red)' : '0 6px 0 var(--chakra-colors-brand-red)'}
+              transform={open ? 'rotate(45deg)' : 'translateY(-3px)'}
+            />
+          </Flex>
+        </Flex>
+
+        {/* Progreso de lectura */}
+        <Box
+          ref={progressRef}
+          position="absolute"
+          left={0}
+          bottom="-1px"
+          h="2px"
+          w="100%"
+          bg="brand.red"
+          transformOrigin="left"
+          transform="scaleX(0)"
+          opacity={open ? 0 : 1}
+        />
+      </Grid>
+
+      {/* Menú mobile a pantalla completa */}
+      <AnimatePresence>
+        {open && (
+          <MotionBox
+            id="menu-mobile"
+            position="fixed"
+            inset={0}
+            zIndex={-1}
+            bg="brand.ink"
+            display={{ base: 'flex', lg: 'none' }}
+            flexDir="column"
+            justifyContent="space-between"
+            pt="calc(96px + env(safe-area-inset-top, 0px))"
+            pb="calc(32px + env(safe-area-inset-bottom, 0px))"
+            px="max(16px, 6vw)"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25, ease: EASE }}
+          >
+            <Flex direction="column">
+              {[...navLinks, CONTACT].map((l, i) => (
+                <MotionA
+                  key={l.href}
+                  href={l.href}
+                  onClick={(e) => go(e, l.href)}
+                  aria-current={active === l.href ? 'true' : undefined}
+                  initial={reduce ? false : { opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, ease: EASE, delay: 0.03 + i * 0.04 }}
+                  style={{ display: 'block' }}
+                >
+                  <Text
+                    as="span"
+                    display="block"
+                    fontFamily="heading"
+                    fontSize="min(13vw, 72px)"
+                    lineHeight={1}
+                    color={l === CONTACT ? 'brand.red' : 'brand.cream'}
                   >
-                    <Text
-                      as="span"
-                      fontFamily="mono"
-                      fontSize="2xs"
-                      fontWeight="600"
-                      letterSpacing="wider"
-                      color="brand.amberLight"
-                    >
-                      {String(i + 1).padStart(2, '0')}
-                    </Text>
-                    <Text
-                      fontFamily="mono"
-                      fontSize="lg"
-                      fontWeight="600"
-                      letterSpacing="wider"
-                      textTransform="uppercase"
-                      color="whiteAlpha.800"
-                    >
-                      {link.label}
-                    </Text>
-                  </Flex>
-                </MotionBox>
+                    {l.label}
+                  </Text>
+                </MotionA>
               ))}
-            </VStack>
+            </Flex>
+            {instagram && (
+              <Text as="a" href={instagram.url} target="_blank" rel="noopener noreferrer"
+                fontFamily="mono" fontSize="13px" letterSpacing="0.16em" textTransform="uppercase" color="brand.mist">
+                {instagram.handle}
+              </Text>
+            )}
           </MotionBox>
         )}
       </AnimatePresence>
-    </Box>
+    </MotionBox>
   )
 }

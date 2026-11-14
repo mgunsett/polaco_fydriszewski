@@ -1,3 +1,7 @@
+/* Alto estable del viewport: --sv = 1svh (no cambia al mostrarse/ocultarse la barra del navegador) */
+:root { --sv: 1vh; }
+@supports (height: 1svh) { :root { --sv: 1svh; } }
+
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }

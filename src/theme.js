@@ -29,6 +29,19 @@ const brand = {
   deep:       '#080C12', // fondo de la sección de contacto
   rec:        '#E5484D', // rojo del indicador REC
   rose:       '#EC8496', // rosa del hover de cerrar en el lightbox
+
+  // ── Paleta Junior (rediseño 2026) ── se migra sección por sección
+  ink:        '#0A1220', // fondo: azul noche (navy del Junior casi negro)
+  ink2:       '#111C31', // paneles
+  navy:       '#1D3A72', // azul Junior
+  navyGlow:   '#1A3466', // halo detrás del jugador
+  red:        '#E1323C', // rojo Junior: acento principal
+  redSoft:    '#F0565E', // rojo para textos chicos sobre fondo oscuro
+  redDark:    '#C92731', // hover de botones rojos
+  cream:      '#F2EEE7', // texto principal
+  mist:       '#8C96AA', // texto secundario (gris con sesgo azul)
+  line:       'rgba(242,238,231,0.12)', // filetes y bordes
+  gold:       '#CFA64C', // dorado: rótulos y detalles
 }
 
 // Colores de la firma del desarrollador (crédito en el footer)

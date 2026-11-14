@@ -4,6 +4,7 @@ import { IoMdStats } from 'react-icons/io'
 
 //Hero
 import polaco1 from '@assets/polaco1.png'
+import polacoJunior from '@assets/polaco_junior.webp'
 import polaco2 from '@assets/polaco2.png'
 import argentina from '@assets/argentina.webp'
 import junior from '@assets/junior.webp'
@@ -59,7 +60,10 @@ export const playerData = {
   birthPlace: 'Rosario, Argentina',
   currentClub: 'Junior de Barranquilla',
   logoCurrentClub: junior,
-  image: polaco1,
+  shortName: 'Polaco Fydriszewski',
+  nickname: 'Polaco',
+  season: 'Temporada 2026',
+  image: polacoJunior,
   image2: polaco2,
 
   stats: [
