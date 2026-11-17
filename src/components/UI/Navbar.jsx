@@ -9,6 +9,7 @@ const MotionBox = motion(Box)
 const navLinks = [
   { label: 'Home', href: '#hero'},
   { label: 'Estadísticas', href: '#estadisticas' },
+  { label: 'Clubes',       href: '#clubes' },
   { label: 'Videos',       href: '#videos' },
   { label: 'Galería',      href: '#galeria' },
   { label: 'Prensa',       href: '#prensa' },
@@ -75,7 +76,7 @@ export default function Navbar() {
         borderRadius={{ base: '18px', lg: '10px' }}
         border="1px solid"
         borderColor={'brand.amberLight'}
-        bg={scrolled ? 'rgba(135, 147, 165, 0.55)' : 'transparent'}
+        bg={scrolled ? 'rgba(7, 18, 43, 0.78)' : 'rgba(7, 18, 43, 0.85)'}
         backdropFilter="blur(20px) saturate(140%)"
         boxShadow={scrolled
           ? '0 10px 34px rgba(0,0,0,0.40)'
@@ -90,10 +91,10 @@ export default function Navbar() {
           color="brand.amber"
           cursor="pointer"
           onClick={(e) => handleLink(e, '#hero')}
-          _hover={{ color: 'brand.brown' }}
+          _hover={{ color: 'brand.dorado' }}
           transition="color 0.2s"
         >
-          {playerData.initials}<Box as="span" color="brand.boneWarm">_</Box>
+          {playerData.initials}<Box as="span" color="brand.dorado">_</Box>
         </Text>
 
         {/* Desktop links */}
@@ -113,7 +114,7 @@ export default function Navbar() {
               fontWeight="500"
               letterSpacing="wider"
               textTransform="uppercase"
-              color="brand.brown"
+              color="brand.gray2"
               cursor="pointer"
               transition="color 0.25s"
               _before={{
@@ -121,7 +122,7 @@ export default function Navbar() {
                 position: 'absolute',
                 inset: 0,
                 borderRadius: '10px',
-                bg: 'linear-gradient(135deg, rgba(77,147,214,0.22) 0%, rgba(30,95,168,0.10) 100%)',
+                bg: 'linear-gradient(135deg, rgba(74,123,255,0.22) 0%, rgba(224,40,28,0.10) 100%)',
                 opacity: 0,
                 transform: 'scale(0.92)',
                 transition: 'opacity 0.25s, transform 0.25s',
@@ -148,19 +149,19 @@ export default function Navbar() {
           display={{ base: 'none', lg: 'block' }}
           px={'10px'}
           py={'5px'}
-          bg="brand.brown"
+          bg="brand.amber"
           border="1px solid"
-          borderColor= 'brand.amberLight'
+          borderColor="brand.amber"
           borderRadius={'5px'}
           fontFamily="mono"
           fontSize="2xs"
           fontWeight="600"
           letterSpacing="wider"
           textTransform="uppercase"
-          color="brand.bone"
+          color="white"
           cursor="pointer"
           transition="all 0.2s"
-          _hover={{ bg: 'brand.brown', color: 'white' }}
+          _hover={{ bg: 'brand.dorado', borderColor: 'brand.dorado' }}
         >
           Contacto
         </Box>
@@ -207,7 +208,7 @@ export default function Navbar() {
             mt={3}
             borderRadius="18px"
             border="1px solid rgba(255,255,255,0.12)"
-            bg="rgba(5,11,20,0.65)"
+            bg="rgba(7,18,43,0.92)"
             backdropFilter="blur(20px) saturate(140%)"
             boxShadow="0 10px 34px rgba(0,0,0,0.40)"
             overflow="hidden"
@@ -230,7 +231,7 @@ export default function Navbar() {
                     py={3}
                     px={3}
                     borderRadius="12px"
-                    _hover={{ color: 'brand.brown', bg: 'whiteAlpha.50' }}
+                    _hover={{ color: 'brand.amber', bg: 'whiteAlpha.50' }}
                     transition="color 0.2s, background 0.2s"
                     cursor="pointer"
                   >
@@ -240,7 +241,7 @@ export default function Navbar() {
                       fontSize="2xs"
                       fontWeight="600"
                       letterSpacing="wider"
-                      color="brand.amberLight"
+                      color="brand.amber"
                     >
                       {String(i + 1).padStart(2, '0')}
                     </Text>

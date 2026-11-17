@@ -3,73 +3,87 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#07122B" />
 
-
-    <!-- SEO básico -->
-     <link rel="icon" href="/favicon.svg " />
-    <title>Polaco Fydriszewski | Jugador Profesional </title>
-    <meta name="description" content="Sitio oficial de Francisco Fydriszewski, delantero argentino de Independiente Medellin. Estadísticas, highlights, galería y contacto profesional." />
-    <meta name="keywords" content="Francisco Fydriszewski, delantero, Independiente Medellin, fútbol argentino,  goleador, Liga Dimayor, highlights" />
-    <meta name="author" content="Polaco Fydriszewski" />
+    <title>Polaco Fydriszewski | Delantero de Junior de Barranquilla</title>
+    <meta name="description" content="Sitio oficial de Francisco «Polaco» Fydriszewski, delantero argentino de Junior de Barranquilla. Estadísticas, goles, videos, galería, prensa y contacto." />
+    <meta name="author" content="Francisco Fydriszewski" />
+    <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://polacofydriszewski.vercel.app/" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preload" href="/fonts/Nippo-Bold.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Nippo-Regular.woff2" as="font" type="font/woff2" crossorigin />
 
     <!-- Open Graph -->
     <meta property="og:type" content="profile" />
-    <meta property="og:title" content="Polaco Fydriszewski — Jugador Profesional" />
-    <meta property="og:description" content="Estadísticas, highlights y galería del delantero argentino de Independiente Medellin." />
+    <meta property="og:title" content="Polaco Fydriszewski | Delantero de Junior de Barranquilla" />
+    <meta property="og:description" content="Estadísticas, goles, videos y contacto del delantero argentino Francisco «Polaco» Fydriszewski." />
     <meta property="og:url" content="https://polacofydriszewski.vercel.app/" />
-    <meta property="og:image" content="https://polacofydriszewski.vercel.app/og-image.webp" />
+    <meta property="og:image" content="https://polacofydriszewski.vercel.app/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Polaco Fydriszewski con la camiseta de Junior de Barranquilla" />
     <meta property="og:locale" content="es_AR" />
-    <meta property="og:site_name" content="Polaco Fydriszewski — Sitio Oficial" />
+    <meta property="og:site_name" content="Polaco Fydriszewski" />
+    <meta property="profile:first_name" content="Francisco" />
+    <meta property="profile:last_name" content="Fydriszewski" />
 
-    <!-- Twitter Card -->
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Polaco Fydriszewski — Jugador Profesional" />
-    <meta name="twitter:description" content="Sitio oficial del delantero argentino de Independiente Medellin. Estadísticas, highlights y contacto." />
-    <meta name="twitter:image" content="https://polacofydriszewski.vercel.app/og-image.webp" />
+    <meta name="twitter:title" content="Polaco Fydriszewski | Delantero de Junior de Barranquilla" />
+    <meta name="twitter:description" content="Estadísticas, goles, videos y contacto del delantero argentino Francisco «Polaco» Fydriszewski." />
+    <meta name="twitter:image" content="https://polacofydriszewski.vercel.app/og-image.jpg" />
 
-    <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Polaco Fydriszewski",
-      "alternateName": "Polaco Fydriszewski",
-      "jobTitle": "Futbolista Profesional",
-      "description": "Delantero argentino que actualmente juega en Independiente Medellin, Liga Dimayor." ,
-      "nationality": {
-        "@type": "Country",
-        "name": "Argentina"
-      },
-      "birthDate": "1996-04-25",
-      "birthPlace": {
-        "@type": "Place",
-        "name": "Rosario, Santa Fe, Argentina"
-      },
-      "height": "1.78 m",
-      "weight": "75 kg",
-      "affiliation": {
-        "@type": "SportsTeam",
-        "name": "Independiente Medellin",
-        "sport": "Fútbol"
-      },
-      "url": "https://polacofydriszewski.vercel.app/",
-      "sameAs": [
-        "https://www.instagram.com/franciscofydriszewskiok/",
-        "https://www.transfermarkt.com.ar/francisco-fydriszewski/profil/spieler/337921"
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://polacofydriszewski.vercel.app/#website",
+          "url": "https://polacofydriszewski.vercel.app/",
+          "name": "Polaco Fydriszewski",
+          "inLanguage": "es"
+        },
+        {
+          "@type": "ProfilePage",
+          "@id": "https://polacofydriszewski.vercel.app/#profile",
+          "url": "https://polacofydriszewski.vercel.app/",
+          "name": "Polaco Fydriszewski | Delantero de Junior de Barranquilla",
+          "isPartOf": { "@id": "https://polacofydriszewski.vercel.app/#website" },
+          "mainEntity": { "@id": "https://polacofydriszewski.vercel.app/#person" }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://polacofydriszewski.vercel.app/#person",
+          "name": "Francisco Fydriszewski",
+          "alternateName": "Polaco Fydriszewski",
+          "jobTitle": "Futbolista profesional, delantero",
+          "description": "Delantero argentino de Junior de Barranquilla. Goleador de la Serie A de Ecuador con Aucas y del Finalización colombiano con Independiente Medellín.",
+          "image": "https://polacofydriszewski.vercel.app/og-image.jpg",
+          "url": "https://polacofydriszewski.vercel.app/",
+          "birthDate": "1993-04-13",
+          "birthPlace": { "@type": "Place", "name": "Rosario, Santa Fe, Argentina" },
+          "nationality": { "@type": "Country", "name": "Argentina" },
+          "height": "1.85 m",
+          "weight": "74 kg",
+          "memberOf": { "@type": "SportsTeam", "name": "Junior de Barranquilla", "sport": "Fútbol" },
+          "sameAs": [
+            "https://www.instagram.com/franciscofydriszewskiok/",
+            "https://www.transfermarkt.com.ar/francisco-fydriszewski/profil/spieler/337921"
+          ]
+        }
       ]
     }
     </script>
-
-    <!-- Fuentes -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
   </head>
   <body>
+    <noscript>
+      <h1>Polaco Fydriszewski</h1>
+      <p>Francisco «Polaco» Fydriszewski, delantero argentino de Junior de Barranquilla. Activá JavaScript para ver estadísticas, videos y galería.</p>
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

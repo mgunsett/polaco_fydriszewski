@@ -1,37 +1,39 @@
+import { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { Box } from '@chakra-ui/react'
 import Navbar from './components/UI/Navbar'
-import Hero from './components/Hero/Hero'
-import StatsSection from './components/Stats/StatsSection'
-import VideosSection from './components/Videos/VideosSection'
-import GallerySection from './components/Gallery/GallerySection'
-import PressSection from './components/Press/PressSection'
-import ContactSection from './components/Contact/ContactSection'
+import HeroSplit from './components/Hero/HeroSplit'
+import StatsMarcador from './components/Stats/StatsMarcador'
+import VideosPaneles from './components/Videos/VideosPaneles'
+import GalleryCarriles from './components/Gallery/GalleryCarriles'
+import PressRecortes from './components/Press/PressRecortes'
+import ContactTarjetas from './components/Contact/ContactTarjetas'
 import Footer from './components/UI/Footer'
-import AdminPage from './pages/AdminPage'
+
+const AdminPage = lazy(() => import('./pages/AdminPage'))
 
 function Landing() {
   return (
-    <Box as="main" bg="brand.dark" overflowX="hidden">
+    <>
       <Navbar />
-      <Hero />
-      <Box mt="-100vh" position="relative" zIndex={21}>
-        <StatsSection />
-        <VideosSection />
-        <GallerySection />
-        <PressSection />
-        <ContactSection />
-        <Footer />
+      <Box as="main" bg="brand.dark" overflowX="clip">
+        <HeroSplit />
+        <StatsMarcador />
+        <VideosPaneles />
+        <GalleryCarriles />
+        <PressRecortes />
+        <ContactTarjetas />
       </Box>
-    </Box>
+      <Footer />
+    </>
   )
 }
 
 export default function App() {
   return (
     <Routes>
-      <Route path="/"          element={<Landing />} />
-      <Route path="/admin"     element={<AdminPage />} />
+      <Route path="/" element={<Landing />} />
+      <Route path="/admin" element={<Suspense fallback={null}><AdminPage /></Suspense>} />
     </Routes>
   )
 }

@@ -1,0 +1,9 @@
+{
+  "name": "Polaco Fydriszewski",
+  "short_name": "Polaco",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#07122B",
+  "theme_color": "#07122B",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}

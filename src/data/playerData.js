@@ -7,6 +7,7 @@ import polaco1 from '@assets/polaco1.png'
 import polaco2 from '@assets/polaco2.png'
 import argentina from '@assets/argentina.webp'
 import junior from '@assets/junior.webp'
+import polacoJunior from '@assets/polaco-junior.webp'
 //Escudos trayectoria
 import escudoIndependiente from '@assets/escudos/escudo_indmedellin.webp'
 import escudoNewells from '@assets/escudos/escudo_newells.webp'
@@ -61,6 +62,29 @@ export const playerData = {
   logoCurrentClub: junior,
   image: polaco1,
   image2: polaco2,
+  heroImage: polacoJunior, // recorte con la camiseta de Junior (Hero)
+  heroAlt: 'Polaco Fydriszewski con los brazos cruzados y la camiseta de Junior',
+  clubShort: 'Junior',
+  season: '2025 / 2026',
+
+  // Frase del bloque principal de Estadísticas
+  statsHook: 'Goleador probado en tres ligas: Argentina, Ecuador y Colombia.',
+
+  // Logros destacados (Hero). v = número o ícono, u = unidad, l = logro, d = club y año
+  highlights: [
+    { v: '15', u: 'goles',   l: 'Goleador de la Serie A',   d: 'Aucas · Ecuador 2022' },
+    { v: '12', u: 'goles',   l: 'Goleador del Finalización', d: 'Ind. Medellín · Colombia 2025' },
+    { v: '★',  u: 'campeón', l: 'Serie A de Ecuador',        d: 'Aucas · 2022' },
+  ],
+
+  // Veces goleador (Estadísticas). k: 'torneo' | 'copa' | 'equipo'
+  scorer: [
+    { goals: 15, title: 'Goleador del torneo', comp: 'Serie A de Ecuador',  club: 'Aucas',              year: '2022',    logo: escudoAucas,         k: 'torneo' },
+    { goals: 12, title: 'Goleador del torneo', comp: 'Torneo Finalización', club: 'Ind. Medellín',      year: '2025',    logo: escudoIndependiente, k: 'torneo' },
+    { goals: 5,  title: 'Goleador de la copa', comp: 'Copa Colombia',       club: 'Ind. Medellín',      year: '2025',    logo: escudoIndependiente, k: 'copa' },
+    { goals: 13, title: 'Goleador del equipo', comp: 'Liga Pro Ecuador',    club: 'Liga Portoviejo',    year: '2020',    logo: escudoPortoviejo,    k: 'equipo' },
+    { goals: 13, title: 'Goleador del equipo', comp: 'Primera B Nacional',  club: 'Argentinos Juniors', year: '2016/17', logo: escudoArgentinos,    k: 'equipo' },
+  ],
 
   stats: [
     { label: 'Velocidad',      value: 91 },
@@ -152,6 +176,7 @@ export const playerData = {
       years:   '2016 — 2017',
       logo:    escudoArgentinos,
       titles:  ['Ascenso a Primera División 2016'],
+      link:    'Préstamo',
       info:    ['Préstamo', 'Máximo goleador del Equipo (13 goles)'],
     },
     {
@@ -172,19 +197,32 @@ export const playerData = {
     },
   ],
 
+  // Videos (sección Paneles). Para sumar uno, copiá un bloque y completá:
+  //  - youtubeId: el código del video de YouTube (lo que va después de watch?v=)
+  //  - o instagram: el código del reel (instagram.com/reel/<código>/)
+  //  - cover: una foto horizontal importada arriba (o la de la galería)
+  //  - crest: escudo del club en ese video
   videos: [
     {
       id: 'v1',
-      title: 'Platense 2025',
-      fullTitle: 'Polaco Fydriszewski | Temporada 2025 [Highlights]',
-      youtubeId: 'UjDETwXdC9w',
-      duration: '4:01',
-      season: 'Temporada',
-      league: 'Liga Dimayor Colombia 2025',
-      thumbnail: photoGraph,
+      title: 'Temporada 2025 · Highlights',
+      club: 'Ind. Medellín',
+      league: 'Liga BetPlay 2025',
+      year: '25',
+      crest: escudoIndependiente,
       cover: photoGraph,
-      category: 'Highlights',
+      youtubeId: 'UjDETwXdC9w',
     },
+    // {
+    //   id: 'v2',
+    //   title: 'Goles con Junior',
+    //   club: 'Junior',
+    //   league: 'Liga BetPlay 2026',
+    //   year: '26',
+    //   crest: junior,
+    //   cover: image1,
+    //   instagram: 'CODIGO_DEL_REEL',
+    // },
   ],
 
   press: [
@@ -193,6 +231,7 @@ export const playerData = {
       logo:  logo1,
       title: 'Fydriszewski marcó golazo agónico en Medellín vs. Juventud de Libertadores',
       date:  'Marzo 2026',
+      summary: 'El gol del Polaco sobre el final ante Juventud por la Copa Libertadores.',
       url:   'https://espndeportes.espn.com/futbol/copa-libertadores/nota/_/id/16429009/medellin-vs-juventud-fydriszewski-video-goles-copa-libertadores',
     },
     {
@@ -200,6 +239,7 @@ export const playerData = {
       logo:  logo2,
       title: 'Cusco FC sufrió gol agónico de Fydriszewski con el que perdió a manos de Independiente por Copa Libertadores',
       date:  'Mayo 2026',
+      summary: 'Su gol en la fecha 3 le dio el triunfo al Medellín ante Cusco.',
       url:   'https://www.infobae.com/peru/deportes/2026/05/01/cusco-fc-sufrio-gol-agonico-de-francisco-fydriszewski-con-el-que-perdio-a-manos-de-independiente-medellin-por-fecha-3-de-copa-libertadores-2026/',
     },
     {
@@ -207,18 +247,21 @@ export const playerData = {
       logo:  logo3,
       title: 'Fydriszewski y su sueño con el DIM: “Estamos para jugar la final y levantar el título”',
       date:  'Octubre 2025',
+      summary: 'Entrevista sobre su presente y los objetivos del equipo.',
       url:   'https://colombia.as.com/futbol/fydriszewski-y-su-sueno-con-el-dim-estamos-para-jugar-la-final-y-levantar-el-titulo-f202510-n/',
     },
   ],
 
+  // Galería (carriles). category: 'cancha' | 'retrato'. pos = objectPosition
+  galleryCats: { cancha: 'En cancha', retrato: 'Retratos' },
   gallery: [
-    { id: 1, src: image1, alt: 'Francisco Fydriszewski', caption: 'Liga Profesional 2024', category: 'Partido', aspect: 'wide' },
-    { id: 2, src: image2, alt: 'Francisco Fydriszewski', caption: 'Festejo ante Racing',    category: 'Festejo', aspect: 'tall' },
-    { id: 3, src: image3, alt: 'Francisco Fydriszewski', caption: 'Pretemporada 2025',       category: 'Entrenamiento', aspect: 'square' },
-    { id: 4, src: image4, alt: 'Francisco Fydriszewski', caption: 'Copa Argentina 2024',     category: 'Partido', aspect: 'wide' },
-    { id: 5, src: image5, alt: 'Francisco Fydriszewski', caption: 'Plantel Talleres 2024',   category: 'Equipo',  aspect: 'wide' },
-    { id: 6, src: image6, alt: 'Francisco Fydriszewski', caption: 'Foto oficial 2024',       category: 'Retrato', aspect: 'tall' },
-    { id: 7, src: image7, alt: 'Francisco Fydriszewski', caption: 'Liga Profesional 2025', category: 'Partido', aspect: 'wide' },
+    { id: 1, src: image1, alt: 'Hace el saludo militar tras un gol en la Copa Libertadores', category: 'cancha' },
+    { id: 2, src: image2, alt: 'Remata al arco con Independiente Medellín',                    category: 'cancha' },
+    { id: 3, src: image3, alt: 'Ataca el área entre defensores rivales',                       category: 'cancha' },
+    { id: 4, src: image4, alt: 'Encara a la defensa con la camiseta blanca',                   category: 'cancha' },
+    { id: 5, src: image5, alt: 'Posa con la pelota en su presentación en Medellín',            category: 'retrato' },
+    { id: 6, src: image6, alt: 'Festeja un gol frente a la hinchada',                          category: 'cancha' },
+    { id: 7, src: image7, alt: 'Controla la pelota con la camiseta suplente',                  category: 'cancha' },
   ],
 
   socialMedia: [
@@ -237,7 +280,7 @@ export const playerData = {
       iconBg: IoMdStats,
       handle: '@franciscofydriszewski',
       url: 'https://www.transfermarkt.com.ar/francisco-fydriszewski/profil/spieler/337921',
-      hoverColor: 'brand.brownLight',
+      hoverColor: 'brand.dorado',
     },
   ],
 

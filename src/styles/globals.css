@@ -1,46 +1,23 @@
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
+/* Tipografía del rediseño: Nippo en todos los pesos (public/fonts) */
+@font-face { font-family: 'Nippo'; font-weight: 300; font-display: swap; src: url('/fonts/Nippo-Light.woff2') format('woff2'); }
+@font-face { font-family: 'Nippo'; font-weight: 400; font-display: swap; src: url('/fonts/Nippo-Regular.woff2') format('woff2'); }
+@font-face { font-family: 'Nippo'; font-weight: 500; font-display: swap; src: url('/fonts/Nippo-Medium.woff2') format('woff2'); }
+@font-face { font-family: 'Nippo'; font-weight: 700; font-display: swap; src: url('/fonts/Nippo-Bold.woff2') format('woff2'); }
 
-.marquee-track {
-  animation: marquee 22s linear infinite;
-}
+/* Alto de pantalla estable en mobile (svh, nunca dvh) */
+:root { --sv: 1vh; }
+@supports (height: 1svh) { :root { --sv: 1svh; } }
 
-@keyframes float {
-  0%   { transform: translateY(0px)   rotate(0deg); }
-  33%  { transform: translateY(-12px) rotate(0.4deg); }
-  66%  { transform: translateY(-6px)  rotate(-0.4deg); }
-  100% { transform: translateY(0px)   rotate(0deg); }
-}
+.tab { font-variant-numeric: tabular-nums; }
 
-.player-float {
-  animation: float 7s ease-in-out infinite;
-}
-
-@keyframes vidSheen {
-  0%   { transform: translateX(-100%); }
-  100% { transform: translateX(300%); }
-}
-
-.stat-bar-fill {
-  transform-origin: left;
-  transform: scaleX(0);
-}
+/* Galería en carriles: cada carril corre solo y se frena con el mouse o el foco */
+@keyframes lane-run { to { transform: translateX(-100%); } }
+.lane-track { animation: lane-run var(--d, 60s) linear infinite; }
+.lane-rev .lane-track { animation-direction: reverse; }
+.lane:hover .lane-track,
+.lane:focus-within .lane-track { animation-play-state: paused; }
 
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track,
-  .player-float {
-    animation: none;
-  }
-}
-
-@media screen and (max-width: 408px){
-  .player-photo {
-    width: 320px !important;
-    max-width: none !important;
-  }
-  .player-number {
-    font-size: 100px !important;
-  }
+  .lane-track { animation: none; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; }
 }
