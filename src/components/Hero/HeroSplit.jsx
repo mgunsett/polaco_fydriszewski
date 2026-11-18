@@ -81,13 +81,11 @@ export default function HeroSplit() {
           }}
         />
         {/* Escudo + posición */}
-        <Flex data-hero="rv" align="flex-end" gap={{ base: 3, lg: 4 }} mb={{ base: 2.5, lg: 5 }}>
-          <Box display={{ base: 'block', lg: 'none' }} boxSize="8px" borderRadius="full" bg="brand.dorado" />
+        <Flex data-hero="rv" align={{ base: 'center', lg: 'flex-end' }} gap={{ base: 3, lg: 4 }} mb={{ base: 2.5, lg: 5 }}>
           <Image
             src={p.logoCurrentClub}
             alt={`Escudo de ${p.currentClub}`}
-            display={{ base: 'none', lg: 'block' }}
-            boxSize="54px"
+            boxSize={{ base: '34px', lg: '54px' }}
             objectFit="contain"
             filter="drop-shadow(0 6px 14px rgba(0,0,0,.4))"
           />
@@ -198,16 +196,6 @@ export default function HeroSplit() {
           bg="brand.amber"
           clipPath={{ base: 'polygon(0 0,100% 0,100% 82%,0 100%)', lg: 'polygon(22% 0,100% 0,100% 100%,0 100%)' }}
         >
-          <Image
-            src={p.logoCurrentClub}
-            alt=""
-            display={{ base: 'block', lg: 'none' }}
-            position="absolute"
-            left="20px"
-            top="78px"
-            w="40px"
-            opacity={0.9}
-          />
         </Box>
         {/* Dorsal grande en azul, detrás del jugador */}
         <Flex
@@ -217,10 +205,11 @@ export default function HeroSplit() {
           inset={{ base: '0 0 auto 0', lg: 0 }}
           h={{ base: R1, lg: 'auto' }}
           zIndex={2}
-          justify="center"
-          align={{ base: 'center', lg: 'center' }}
-          pl={{ base: '12%', lg: '6%' }}
-          pb={{ base: '8%', lg: '6%' }}
+          justify={{ base: 'flex-start', lg: 'center' }}
+          align={{ base: 'flex-start', lg: 'center' }}
+          pl={{ base: '20px', lg: '6%' }}
+          pt={{ base: '84px', lg: 0 }}
+          pb={{ base: 0, lg: '6%' }}
           pointerEvents="none"
           userSelect="none"
         >
@@ -230,8 +219,8 @@ export default function HeroSplit() {
             lineHeight={0.8}
             letterSpacing="-0.04em"
             color="transparent"
-            fontSize={{ base: 'min(86vw, 420px)', lg: 'clamp(400px, 44vw, 780px)' }}
-            sx={{ WebkitTextStroke: { base: '3px #4A7BFF', lg: '5px #4A7BFF' } }}
+            fontSize={{ base: 'min(30vw, 150px)', lg: 'clamp(400px, 44vw, 780px)' }}
+            sx={{ WebkitTextStroke: { base: '2px #4A7BFF', lg: '5px #4A7BFF' } }}
           >
             {p.number}
           </Text>
