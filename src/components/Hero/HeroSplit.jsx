@@ -63,6 +63,23 @@ export default function HeroSplit() {
         pt={{ base: 6, lg: '90px' }}
         pb={{ base: 6, lg: '120px' }}
       >
+        {/* Mobile: blur + oscurecido detrás de los textos para que se lean sobre la foto.
+            Arranca transparente arriba para que el corte no se note. */}
+        <Box
+          aria-hidden="true"
+          display={{ base: 'block', lg: 'none' }}
+          position="absolute"
+          inset="-28px 0 0 0"
+          zIndex={-1}
+          pointerEvents="none"
+          bg="linear-gradient(180deg, rgba(7,18,43,0) 0%, rgba(7,18,43,.45) 22%, rgba(7,18,43,.62) 100%)"
+          sx={{
+            backdropFilter: 'blur(10px)',
+            WebkitBackdropFilter: 'blur(10px)',
+            maskImage: 'linear-gradient(180deg, transparent 0, #000 70px)',
+            WebkitMaskImage: 'linear-gradient(180deg, transparent 0, #000 70px)',
+          }}
+        />
         {/* Escudo + posición */}
         <Flex data-hero="rv" align="flex-end" gap={{ base: 3, lg: 4 }} mb={{ base: 2.5, lg: 5 }}>
           <Box display={{ base: 'block', lg: 'none' }} boxSize="8px" borderRadius="full" bg="brand.dorado" />
