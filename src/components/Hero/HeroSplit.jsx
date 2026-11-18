@@ -3,10 +3,6 @@ import { Box, Flex, Grid, Text, Image } from '@chakra-ui/react'
 import { gsap } from 'gsap'
 import { playerData } from '../../data/playerData'
 
-// Hero "Split editorial": a la izquierda escudo + posición, nombre, logros
-// destacados y botones; a la derecha un panel rojo en diagonal con el recorte.
-// El dorsal va grande y en azul sobre el panel rojo, detrás del jugador, solo con borde.
-
 const EASE = 'cubic-bezier(0.23,1,0.32,1)'
 
 function scrollToId(id) {
@@ -90,7 +86,7 @@ export default function HeroSplit() {
         pb={{ base: 8, lg: 10 }}
       >
         {/* Escudo + posición */}
-        <Flex data-hero="rv" align="center" gap={{ base: 3, lg: 4 }} mb={{ base: 2.5, lg: 5 }}>
+        <Flex data-hero="rv" align="flex-end" gap={{ base: 3, lg: 4 }} mb={{ base: 2.5, lg: 5 }}>
           <Box display={{ base: 'block', lg: 'none' }} boxSize="8px" borderRadius="full" bg="brand.dorado" />
           <Image
             src={p.logoCurrentClub}
@@ -102,8 +98,6 @@ export default function HeroSplit() {
           />
           <Text fontSize={{ base: '11px', lg: '12px' }} fontWeight="bold" letterSpacing="0.28em" textTransform="uppercase" color="brand.gray">
             <Box as="b" color="brand.bone" fontSize={{ base: '11px', lg: '15px' }} letterSpacing="0.24em">{p.position}</Box>
-            {' · '}#{p.number}
-            <Box as="span" display={{ base: 'none', lg: 'inline' }}> · {p.clubShort}</Box>
           </Text>
         </Flex>
 
@@ -143,9 +137,7 @@ export default function HeroSplit() {
 
         {/* Logros destacados */}
         <Box data-hero="rv" mt={{ base: 3.5, lg: '30px' }} maxW="640px">
-          <Text fontSize="10px" fontWeight="bold" letterSpacing="0.28em" textTransform="uppercase" color="brand.dorado" mb={{ base: 2, lg: 3 }}>
-            Logros destacados
-          </Text>
+         
           <Grid templateColumns="repeat(3, 1fr)" borderTop="1px solid" borderBottom="1px solid" borderColor="brand.amberLight">
             {p.highlights.slice(0, 3).map((h, i) => (
               <Box
@@ -170,7 +162,7 @@ export default function HeroSplit() {
           </Grid>
         </Box>
 
-        <Flex data-hero="rv" gap="14px" mt={{ base: 4.5, lg: '30px' }}>
+        {/* <Flex data-hero="rv" gap="14px" mt={{ base: 4.5, lg: '30px' }}>
           {[
             { label: 'Ver jugadas', href: '#videos', solid: true },
             { label: 'Contacto', href: '#contact' },
@@ -200,7 +192,7 @@ export default function HeroSplit() {
               {b.label}
             </Box>
           ))}
-        </Flex>
+        </Flex> */}
       </Flex>
 
       {/* Foto */}
