@@ -14,6 +14,9 @@ function scrollToId(id) {
   else el.scrollIntoView({ behavior: 'smooth' })
 }
 
+// Mobile: alto de la franja roja de arriba (la foto baja hasta el MatchBox)
+const R1 = 'max(340px, calc(44 * var(--sv)))'
+
 const fitSize = (len, max, avail) => `min(${max}, calc((${avail}) / ${(len * 0.64).toFixed(2)}))`
 
 export default function HeroSplit() {
@@ -45,7 +48,7 @@ export default function HeroSplit() {
       minH={{ base: 'calc(100 * var(--sv))', lg: 'max(700px, calc(100 * var(--sv)))' }}
       display="grid"
       gridTemplateColumns={{ base: 'minmax(0, 1fr)', lg: 'minmax(0, 1.05fr) minmax(0, 1fr)' }}
-      gridTemplateRows={{ base: 'minmax(420px, 56svh) auto', lg: '1fr' }}
+      gridTemplateRows={{ base: `${R1} auto auto`, lg: '1fr' }}
     >
       {/* Texto */}
       <Flex
@@ -54,10 +57,11 @@ export default function HeroSplit() {
         direction="column"
         justify="center"
         gridRow={{ base: 2, lg: 1 }}
+        gridColumn={1}
         px={{ base: 5, lg: 0 }}
         pl={{ lg: '60px' }}
         pt={{ base: 6, lg: '90px' }}
-        pb={{ base: 8, lg: '120px' }}
+        pb={{ base: 6, lg: '120px' }}
       >
         {/* Escudo + posición */}
         <Flex data-hero="rv" align="flex-end" gap={{ base: 3, lg: 4 }} mb={{ base: 2.5, lg: 5 }}>
@@ -154,11 +158,12 @@ export default function HeroSplit() {
           ))}
         </Flex> */}
 
-        {/* Partidos en mobile: debajo del bloque de logros */}
-        <Box data-hero="rv" mt={6} display={{ base: 'block', lg: 'none' }}>
-          <MatchTicker last={matches.last} next={matches.next} />
-        </Box>
       </Flex>
+
+      {/* Partidos en mobile: fila propia debajo de los textos (la foto termina acá) */}
+      <Box data-hero="rv" gridRow={3} gridColumn={1} px={5} pb={8} position="relative" zIndex={5} display={{ base: 'block', lg: 'none' }}>
+        <MatchTicker last={matches.last} next={matches.next} />
+      </Box>
 
       {/* Partidos en desktop: marcador pegado abajo del hero */}
       <Box data-hero="rv" display={{ base: 'none', lg: 'block' }} position="absolute" left={0} right={0} bottom={0} zIndex={6}>
@@ -166,11 +171,13 @@ export default function HeroSplit() {
       </Box>
 
       {/* Foto */}
-      <Box position="relative" gridRow={1} gridColumn={{ lg: 2 }}>
+      {/* En mobile ocupa las filas 1 y 2: la foto baja por detrás de los textos */}
+      <Box position="relative" gridRow={{ base: '1 / 3', lg: 1 }} gridColumn={{ base: 1, lg: 2 }}>
         <Box
           data-hero="panel"
           position="absolute"
-          inset={{ base: 0, lg: '0 0 0 -8%' }}
+          inset={{ base: '0 0 auto 0', lg: '0 0 0 -8%' }}
+          h={{ base: R1, lg: 'auto' }}
           bg="brand.amber"
           clipPath={{ base: 'polygon(0 0,100% 0,100% 82%,0 100%)', lg: 'polygon(22% 0,100% 0,100% 100%,0 100%)' }}
         >
@@ -190,7 +197,8 @@ export default function HeroSplit() {
           data-hero="dorsal"
           aria-hidden="true"
           position="absolute"
-          inset={0}
+          inset={{ base: '0 0 auto 0', lg: 0 }}
+          h={{ base: R1, lg: 'auto' }}
           zIndex={2}
           justify="center"
           align={{ base: 'center', lg: 'center' }}
@@ -225,7 +233,7 @@ export default function HeroSplit() {
             src={p.heroImage}
             alt={p.heroAlt}
             fetchpriority="high"
-            h={{ base: '84%', lg: '94%' }}
+            h={{ base: '93%', lg: '94%' }}
             w="auto"
             maxW="none"
             filter="drop-shadow(-24px 20px 40px rgba(0,0,0,.5))"
