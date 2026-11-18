@@ -5,7 +5,7 @@ import { playerData } from '../../data/playerData'
 
 // Hero "Split editorial": a la izquierda escudo + posición, nombre, logros
 // destacados y botones; a la derecha un panel rojo en diagonal con el recorte.
-// El dorsal va de fondo detrás del nombre, solo con contorno.
+// El dorsal va grande y en azul sobre el panel rojo, detrás del jugador.
 
 const EASE = 'cubic-bezier(0.23,1,0.32,1)'
 
@@ -62,28 +62,6 @@ export default function HeroSplit() {
         pt={{ base: 6, lg: '90px' }}
         pb={{ base: 8, lg: 10 }}
       >
-        {/* Dorsal de fondo, solo contorno */}
-        <Text
-          data-hero="dorsal"
-          aria-hidden="true"
-          position="absolute"
-          zIndex={-1}
-          left={{ base: 'auto', lg: '30px' }}
-          right={{ base: '6px', lg: 'auto' }}
-          top={{ base: '4px', lg: '50%' }}
-          transform={{ base: 'none', lg: 'translateY(-58%)' }}
-          fontFamily="heading"
-          fontWeight="bold"
-          fontSize={{ base: '48vw', lg: 'clamp(300px, 36vw, 560px)' }}
-          lineHeight={0.8}
-          color="transparent"
-          pointerEvents="none"
-          userSelect="none"
-          sx={{ WebkitTextStroke: { base: '1.5px rgba(224,40,28,.42)', lg: '2px rgba(224,40,28,.55)' } }}
-        >
-          {p.number}
-        </Text>
-
         {/* Escudo + posición */}
         <Flex data-hero="rv" align="center" gap={{ base: 3, lg: 4 }} mb={{ base: 2.5, lg: 5 }}>
           <Box display={{ base: 'block', lg: 'none' }} boxSize="8px" borderRadius="full" bg="brand.dorado" />
@@ -204,6 +182,32 @@ export default function HeroSplit() {
             opacity={0.9}
           />
         </Box>
+        {/* Dorsal grande en azul, detrás del jugador */}
+        <Flex
+          data-hero="dorsal"
+          aria-hidden="true"
+          position="absolute"
+          inset={0}
+          zIndex={2}
+          justify="center"
+          align={{ base: 'center', lg: 'center' }}
+          pl={{ base: '12%', lg: '6%' }}
+          pb={{ base: '8%', lg: '6%' }}
+          pointerEvents="none"
+          userSelect="none"
+        >
+          <Text
+            fontFamily="heading"
+            fontWeight="bold"
+            lineHeight={0.8}
+            letterSpacing="-0.04em"
+            color="brand.dorado"
+            fontSize={{ base: 'min(64vw, 300px)', lg: 'clamp(320px, 38vw, 640px)' }}
+            textShadow="0 30px 60px rgba(7,18,43,.35)"
+          >
+            {p.number}
+          </Text>
+        </Flex>
         <Flex
           data-hero="player"
           position="absolute"
