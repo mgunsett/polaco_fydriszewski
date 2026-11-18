@@ -14,8 +14,6 @@ function scrollToId(id) {
   else el.scrollIntoView({ behavior: 'smooth' })
 }
 
-// El apellido se ajusta solo con CSS según su largo (apellidos largos):
-// cada letra de Nippo Bold en mayúscula ocupa ~0.64em.
 const fitSize = (len, max, avail) => `min(${max}, calc((${avail}) / ${(len * 0.64).toFixed(2)}))`
 
 export default function HeroSplit() {
@@ -227,7 +225,7 @@ export default function HeroSplit() {
             src={p.heroImage}
             alt={p.heroAlt}
             fetchpriority="high"
-            h={{ base: '84%', lg: '96%' }}
+            h={{ base: '84%', lg: '94%' }}
             w="auto"
             maxW="none"
             filter="drop-shadow(-24px 20px 40px rgba(0,0,0,.5))"

@@ -7,9 +7,7 @@ import { playerData } from '../../data/playerData'
 
 gsap.registerPlugin(ScrollTrigger)
 
-// Contacto "Tarjetas grandes": 2x2, toda la tarjeta es el link. Arriba las
-// redes (Instagram y Transfermarkt), abajo el representante (en el acento) y marketing.
-// De fondo, el logo de cada una en gris y tenue.
+
 
 const EASE = 'cubic-bezier(0.23,1,0.32,1)'
 const BG = '#07122B'      // brand.dark
@@ -20,10 +18,10 @@ function buildCards() {
   const [ig, tm] = playerData.socialMedia
   const [rep, mkt] = playerData.contact
   return [
-    ig && { role: `Directo con ${playerData.name.charAt(0) + playerData.name.slice(1).toLowerCase()}`, name: ig.label, sub: ig.handle, url: ig.url, icon: FaInstagram },
-    tm && { role: 'Ficha profesional', name: 'Transfermarkt', sub: 'Trayectoria y valor de mercado', url: tm.url, img: tm.image },
-    rep && { role: rep.title, name: rep.label, sub: `${rep.handle} · Clubes y transferencias`, url: rep.url, img: rep.image, highlight: true },
-    mkt && { role: mkt.title, name: mkt.label, sub: `${mkt.handle} · Marcas y acciones comerciales`, url: mkt.url, img: mkt.image },
+    ig && { role: `Personal`, name: ig.label, sub: ig.handle, url: ig.url, icon: FaInstagram },
+    tm && { role: 'Ficha', name: 'Transfermarkt', sub: 'Trayectoria y valor de mercado', url: tm.url, img: tm.image, fill: true },
+    rep && { role: rep.title, name: rep.label, sub: `${rep.handle}`, url: rep.url, img: rep.image, highlight: true },
+    mkt && { role: mkt.title, name: mkt.label, sub: `${mkt.handle}`, url: mkt.url, img: mkt.image },
   ].filter(Boolean)
 }
 
@@ -77,7 +75,7 @@ function ContactCard({ card }) {
       </Box>
 
       <Flex justify="space-between" align="flex-start" position="relative">
-        <Box boxSize="64px" borderRadius="full" bg={BG} display="grid" placeItems="center" color="brand.amber" p={card.icon ? 0 : '7px'} overflow="hidden">
+        <Box boxSize="64px" borderRadius="full" bg={BG} display="grid" placeItems="center" color="brand.amber" p={card.icon || card.fill ? 0 : '7px'} overflow="hidden">
           <Logo card={card} size="28px" />
         </Box>
         <Box className="c-arrow" aria-hidden="true" boxSize="48px" borderRadius="full" border="1.5px solid currentColor" display="grid" placeItems="center" fontSize="18px" transition={`transform .35s ${EASE}`}>

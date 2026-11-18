@@ -7,9 +7,6 @@ import ClubsGrid from '../Clubs/ClubsGrid'
 
 gsap.registerPlugin(ScrollTrigger)
 
-// Estadísticas "Marcador": el número que lo define en un bloque gigante y el
-// resto de la temporada en un tablero. Debajo, la ficha en una fila, los
-// atributos en barras segmentadas y el bloque "Veces goleador".
 
 const LINE = 'brand.amberLight'
 
@@ -27,11 +24,11 @@ function ScoreBoard() {
   return (
     <Grid data-reveal templateColumns={{ base: '1fr', lg: '1.1fr 1fr' }} gap="2px" bg={LINE} border="1px solid" borderColor={LINE}>
       <Flex direction="column" justify="space-between" gap={{ base: 2.5, lg: 0 }} bg="brand.amber" color="brand.dark" px={{ base: 6, lg: '38px' }} py={{ base: 6, lg: '34px' }} minH={{ lg: '340px' }}>
-        <Text fontSize="12px" fontWeight="bold" letterSpacing="0.24em" textTransform="uppercase">{main.label} jugados</Text>
+        <Text fontSize="12px" fontWeight="bold" letterSpacing="0.24em" textTransform="uppercase">{main.label}</Text>
         <Text className="tab" fontFamily="heading" fontWeight="bold" fontSize={{ base: '44vw', lg: 'clamp(150px, 24vw, 340px)' }} lineHeight={0.78} letterSpacing="-0.02em">
           {main.value}
         </Text>
-        <Text fontSize="15px" fontWeight="500" maxW="30ch">{playerData.statsHook}</Text>
+        
       </Flex>
       <Grid templateColumns="repeat(2, 1fr)" gap="2px">
         {rest.map((s, i) => {
@@ -128,7 +125,7 @@ function ScorerBlock() {
     >
       <Flex direction={{ base: 'row', lg: 'column' }} justify={{ base: 'flex-start', lg: 'space-between' }} align={{ base: 'flex-end', lg: 'stretch' }} gap={4}>
         <Box>
-          <Label color="brand.dorado" fontSize="11px" letterSpacing="0.28em">Olfato de gol</Label>
+          <Label color="brand.dorado" fontSize="11px" letterSpacing="0.28em">Destacado</Label>
           <Text fontFamily="heading" fontWeight="bold" fontSize={{ base: '96px', lg: '150px' }} lineHeight={0.8} color="brand.amber" mt={{ base: 0, lg: 3.5 }} letterSpacing="-0.03em">
             {list.length}
             <Box as="span" fontSize={{ base: '36px', lg: '56px' }} color="brand.bone" ml="4px">×</Box>
@@ -136,11 +133,7 @@ function ScorerBlock() {
         </Box>
         <Box>
           <Text as="h3" fontFamily="heading" fontWeight="bold" fontSize={{ base: '20px', lg: '26px' }} textTransform="uppercase" lineHeight={1}>Veces goleador</Text>
-          <Text fontSize={{ base: '11px', lg: '12px' }} color="brand.gray" mt={{ base: 1.5, lg: 2.5 }} letterSpacing="0.06em" lineHeight={1.6}>
-            {parts.map(([n, l], i) => (
-              <Box as="span" key={l}>{i > 0 && ' · '}<Box as="b" color="brand.bone">{n}</Box> {l}</Box>
-            ))}
-          </Text>
+          
         </Box>
       </Flex>
 

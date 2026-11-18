@@ -65,10 +65,9 @@ export const playerData = {
   heroImage: polacoJunior, // recorte con la camiseta de Junior (Hero)
   heroAlt: 'Polaco Fydriszewski con los brazos cruzados y la camiseta de Junior',
   clubShort: 'Junior',
-  season: '2025 / 2026',
+  season: '2025 | 2026',
 
-  // Frase del bloque principal de Estadísticas
-  statsHook: 'Goleador probado en tres ligas: Argentina, Ecuador y Colombia.',
+
 
   // Logros destacados (Hero). v = número o ícono, u = unidad, l = logro, d = club y año
   highlights: [
@@ -87,20 +86,20 @@ export const playerData = {
   ],
 
   stats: [
-    { label: 'Velocidad',      value: 91 },
-    { label: 'Definición',     value: 88 },
+    { label: 'Velocidad',      value: 81 },
+    { label: 'Definición',     value: 91 },
     { label: 'Regate',         value: 84 },
-    { label: 'Juego Aéreo',    value: 75 },
+    { label: 'Juego Aéreo',    value: 90 },
     { label: 'Presión Alta',   value: 82 },
     { label: 'Visión de Juego',value: 79 },
   ],
 
   seasonStats: [
-    { label: 'Partidos',    value: 19 },
-    { label: 'Goles',       value: 3 },
+    { label: 'Goles',       value: 28 },
+    { label: 'Partidos jugados', value: 94 },
     { label: 'Asistencias', value: 2  },
-    { label: 'Tiros al árco', value: 28  },
-    { label: 'Min / Part.', value: "1,470'" },
+    { label: 'Tiros al árco', value: 61 },
+    { label: 'Min / Part.', value: "4,935'" },
     { label: 'Valoración', value: 7.4  },
 
   ],
@@ -197,11 +196,7 @@ export const playerData = {
     },
   ],
 
-  // Videos (sección Paneles). Para sumar uno, copiá un bloque y completá:
-  //  - youtubeId: el código del video de YouTube (lo que va después de watch?v=)
-  //  - o instagram: el código del reel (instagram.com/reel/<código>/)
-  //  - cover: una foto horizontal importada arriba (o la de la galería)
-  //  - crest: escudo del club en ese video
+  
   videos: [
     {
       id: 'v1',
