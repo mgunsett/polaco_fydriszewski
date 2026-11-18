@@ -1,3 +1,5 @@
+import junior from '@assets/junior.webp'
+
 export function docToMatch(data) {
   return {
     home:      { name: data.home_team, shield: data.home_shield || null },
@@ -10,23 +12,24 @@ export function docToMatch(data) {
   }
 }
 
+// Datos de muestra: los reales se cargan desde /admin (Firebase)
 export const defaultMatches = {
   last: {
-    home:      { name: 'Talleres', shield: null },
-    away:      { name: 'Boca Juniors', shield: null },
+    home:      { name: 'Junior', shield: junior },
+    away:      { name: 'Millonarios', shield: null },
     homeScore: 2,
     awayScore: 1,
-    date:      '08 Jun 2025',
-    stadium:   'Mario Kempes',
-    competition: 'Liga Profesional',
+    date:      '09 Nov 2026',
+    stadium:   'Metropolitano',
+    competition: 'Liga BetPlay',
   },
   next: {
-    home:      { name: 'River Plate', shield: null },
-    away:      { name: 'Talleres', shield: null },
+    home:      { name: 'Atl. Nacional', shield: null },
+    away:      { name: 'Junior', shield: junior },
     homeScore: null,
     awayScore: null,
-    date:      '22 Jun 2025',
-    stadium:   'Monumental',
-    competition: 'Liga Profesional',
+    date:      '23 Nov 2026 · 20:30',
+    stadium:   'Atanasio Girardot',
+    competition: 'Liga BetPlay',
   },
 }

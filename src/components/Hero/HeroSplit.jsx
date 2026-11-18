@@ -2,6 +2,8 @@ import { useRef, useEffect } from 'react'
 import { Box, Flex, Grid, Text, Image } from '@chakra-ui/react'
 import { gsap } from 'gsap'
 import { playerData } from '../../data/playerData'
+import useMatches from '../../hooks/useMatches'
+import MatchTicker from './MatchBox'
 
 const EASE = 'cubic-bezier(0.23,1,0.32,1)'
 
@@ -18,39 +20,13 @@ const fitSize = (len, max, avail) => `min(${max}, calc((${avail}) / ${(len * 0.6
 
 export default function HeroSplit() {
   const rootRef = useRef(null)
-  const colRef = useRef(null)
-  const lastRef = useRef(null)
-  const splitRef = useRef(null)
   const p = playerData
-
-  // El apellido cambia a azul justo donde cruza el panel rojo: una copia azul
-  // encima, recortada con la misma diagonal del panel.
-  const clipSplit = () => {
-    const col = colRef.current, last = lastRef.current, split = splitRef.current
-    if (!col || !last || !split) return
-    if (!window.matchMedia('(min-width: 62em)').matches) { split.style.clipPath = 'inset(0 0 0 100%)'; return }
-    const sec = rootRef.current.getBoundingClientRect()
-    const c = col.getBoundingClientRect()
-    const r = last.getBoundingClientRect()
-    // Panel: inset 0 0 0 -8% de la columna, polygon(22% 0, 100% 0, 100% 100%, 0 100%)
-    const pl = c.left - c.width * 0.08
-    const pw = c.width * 1.08
-    const xAt = (y) => pl + pw * 0.22 * (1 - (y - sec.top) / sec.height) - r.left
-    const m = r.height * 0.3 // margen: las letras sobresalen de la caja (line-height corto)
-    split.style.clipPath = `polygon(${xAt(r.top - m)}px ${-m}px, 9999px ${-m}px, 9999px ${r.height + m}px, ${xAt(r.bottom + m)}px ${r.height + m}px)`
-  }
-
-  useEffect(() => {
-    clipSplit()
-    const ro = new ResizeObserver(clipSplit)
-    ro.observe(rootRef.current)
-    return () => ro.disconnect()
-  }, [])
+  const { matches } = useMatches()
 
   useEffect(() => {
     const mm = gsap.matchMedia()
     mm.add('(prefers-reduced-motion: no-preference)', () => {
-      const tl = gsap.timeline({ defaults: { ease: 'expo.out', duration: 1.1 }, onComplete: clipSplit })
+      const tl = gsap.timeline({ defaults: { ease: 'expo.out', duration: 1.1 } })
       tl.from('[data-hero="panel"]', { xPercent: 30, opacity: 0, duration: 1.2 })
         .from('[data-hero="player"]', { x: 60, opacity: 0, duration: 1.4 }, 0.25)
         .from('[data-hero="dorsal"]', { opacity: 0, duration: 1.6 }, 0.2)
@@ -67,8 +43,8 @@ export default function HeroSplit() {
       position="relative"
       overflow="hidden"
       bg="brand.dark"
-      h={{ base: 'auto', lg: 'calc(100 * var(--sv))' }}
-      minH={{ base: 'calc(100 * var(--sv))', lg: '640px' }}
+      h="auto"
+      minH={{ base: 'calc(100 * var(--sv))', lg: 'max(700px, calc(100 * var(--sv)))' }}
       display="grid"
       gridTemplateColumns={{ base: 'minmax(0, 1fr)', lg: 'minmax(0, 1.05fr) minmax(0, 1fr)' }}
       gridTemplateRows={{ base: 'minmax(420px, 56svh) auto', lg: '1fr' }}
@@ -83,7 +59,7 @@ export default function HeroSplit() {
         px={{ base: 5, lg: 0 }}
         pl={{ lg: '60px' }}
         pt={{ base: 6, lg: '90px' }}
-        pb={{ base: 8, lg: 10 }}
+        pb={{ base: 8, lg: '120px' }}
       >
         {/* Escudo + posición */}
         <Flex data-hero="rv" align="flex-end" gap={{ base: 3, lg: 4 }} mb={{ base: 2.5, lg: 5 }}>
@@ -111,27 +87,13 @@ export default function HeroSplit() {
             display="block"
             fontSize={{
               base: fitSize(p.fullName.length, '19vw', '100vw - 40px'),
-              lg: fitSize(p.fullName.length, 'clamp(70px, 10.4vw, 190px)', '56vw - 60px'),
+              lg: fitSize(p.fullName.length, 'clamp(70px, 10.4vw, 190px)', '53vw - 90px'),
             }}
-            ref={lastRef}
-            position="relative"
             color="brand.amber"
             ml="-0.04em"
             whiteSpace="nowrap"
           >
             {p.fullName}
-            <Box
-              as="span"
-              ref={splitRef}
-              aria-hidden="true"
-              position="absolute"
-              inset={0}
-              color="brand.dorado"
-              pointerEvents="none"
-              style={{ clipPath: 'inset(0 0 0 100%)' }}
-            >
-              {p.fullName}
-            </Box>
           </Box>
         </Box>
 
@@ -193,10 +155,20 @@ export default function HeroSplit() {
             </Box>
           ))}
         </Flex> */}
+
+        {/* Partidos en mobile: debajo del bloque de logros */}
+        <Box data-hero="rv" mt={6} display={{ base: 'block', lg: 'none' }}>
+          <MatchTicker last={matches.last} next={matches.next} />
+        </Box>
       </Flex>
 
+      {/* Partidos en desktop: marcador pegado abajo del hero */}
+      <Box data-hero="rv" display={{ base: 'none', lg: 'block' }} position="absolute" left={0} right={0} bottom={0} zIndex={6}>
+        <MatchTicker last={matches.last} next={matches.next} />
+      </Box>
+
       {/* Foto */}
-      <Box ref={colRef} position="relative" gridRow={1} gridColumn={{ lg: 2 }}>
+      <Box position="relative" gridRow={1} gridColumn={{ lg: 2 }}>
         <Box
           data-hero="panel"
           position="absolute"
