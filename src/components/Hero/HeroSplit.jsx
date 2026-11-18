@@ -2,6 +2,8 @@ import { useRef, useEffect } from 'react'
 import { Box, Flex, Grid, Text, Image } from '@chakra-ui/react'
 import { gsap } from 'gsap'
 import { playerData } from '../../data/playerData'
+import useMatches from '../../hooks/useMatches'
+import { MatchTicker, MatchCard, MatchTickets } from './MatchBox'
 
 // Hero "Split editorial": a la izquierda escudo + posición, nombre, logros
 // destacados y botones; a la derecha un panel rojo en diagonal con el recorte.
@@ -23,6 +25,9 @@ const fitSize = (len, max, avail) => `min(${max}, calc((${avail}) / ${(len * 0.6
 export default function HeroSplit() {
   const rootRef = useRef(null)
   const p = playerData
+  const { matches } = useMatches()
+  // Vista previa de variantes: ?mb=ticker | card | tickets
+  const mb = new URLSearchParams(window.location.search).get('mb') || 'ticker'
 
   useEffect(() => {
     const mm = gsap.matchMedia()
@@ -160,7 +165,21 @@ export default function HeroSplit() {
             </Box>
           ))}
         </Flex>
+
+        {/* Partidos: en mobile siempre en el flujo; tickets también en desktop */}
+        <Box data-hero="rv" mt={{ base: 6, lg: '30px' }} display={{ base: 'block', lg: mb === 'tickets' ? 'block' : 'none' }}>
+          {mb === 'ticker' && <MatchTicker last={matches.last} next={matches.next} />}
+          {mb === 'card' && <MatchCard last={matches.last} next={matches.next} />}
+          {mb === 'tickets' && <MatchTickets last={matches.last} next={matches.next} />}
+        </Box>
       </Flex>
+
+      {/* Partidos desktop: marcador abajo o tarjeta sobre el panel */}
+      {mb === 'ticker' && (
+        <Box data-hero="rv" display={{ base: 'none', lg: 'block' }} position="absolute" left={0} right={0} bottom={0} zIndex={6}>
+          <MatchTicker last={matches.last} next={matches.next} />
+        </Box>
+      )}
 
       {/* Foto */}
       <Box position="relative" gridRow={1} gridColumn={{ lg: 2 }}>
@@ -208,6 +227,11 @@ export default function HeroSplit() {
             {p.number}
           </Text>
         </Flex>
+        {mb === 'card' && (
+          <Box data-hero="rv" display={{ base: 'none', lg: 'block' }} position="absolute" left="2%" bottom="48px" zIndex={6}>
+            <MatchCard last={matches.last} next={matches.next} />
+          </Box>
+        )}
         <Flex
           data-hero="player"
           position="absolute"
