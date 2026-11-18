@@ -5,7 +5,7 @@ import { playerData } from '../../data/playerData'
 
 // Hero "Split editorial": a la izquierda escudo + posición, nombre, logros
 // destacados y botones; a la derecha un panel rojo en diagonal con el recorte.
-// El dorsal va grande y en azul sobre el panel rojo, detrás del jugador.
+// El dorsal va grande y en azul sobre el panel rojo, detrás del jugador, solo con borde.
 
 const EASE = 'cubic-bezier(0.23,1,0.32,1)'
 
@@ -201,9 +201,9 @@ export default function HeroSplit() {
             fontWeight="bold"
             lineHeight={0.8}
             letterSpacing="-0.04em"
-            color="brand.dorado"
-            fontSize={{ base: 'min(64vw, 300px)', lg: 'clamp(320px, 38vw, 640px)' }}
-            textShadow="0 30px 60px rgba(7,18,43,.35)"
+            color="transparent"
+            fontSize={{ base: 'min(86vw, 420px)', lg: 'clamp(400px, 44vw, 780px)' }}
+            sx={{ WebkitTextStroke: { base: '3px #4A7BFF', lg: '5px #4A7BFF' } }}
           >
             {p.number}
           </Text>
