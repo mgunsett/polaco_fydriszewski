@@ -27,6 +27,16 @@ import image4 from '@assets/gallery/image4.webp'
 import image5 from '@assets/gallery/image5.webp'
 import image6 from '@assets/gallery/image6.webp'
 import image7 from '@assets/gallery/image7.webp'
+import junior1 from '@assets/gallery/junior1.webp'
+import junior2 from '@assets/gallery/junior2.webp'
+import junior3 from '@assets/gallery/junior3.webp'
+import junior4 from '@assets/gallery/junior4.webp'
+import junior5 from '@assets/gallery/junior5.webp'
+import junior6 from '@assets/gallery/junior6.webp'
+import junior7 from '@assets/gallery/junior7.webp'
+import junior8 from '@assets/gallery/junior8.webp'
+import junior9 from '@assets/gallery/junior9.webp'
+import junior10 from '@assets/gallery/junior10.webp'
 //Video
 import photoGraph from '@assets/perfil_video.webp'
 //Prensa
@@ -250,6 +260,16 @@ export const playerData = {
   // Galería (carriles). category: 'cancha' | 'retrato'. pos = objectPosition
   galleryCats: { cancha: 'En cancha', retrato: 'Retratos' },
   gallery: [
+    { id: 101, src: junior1, alt: 'Conduce la pelota con la camiseta de Junior', category: 'cancha', pos: '55% 45%' },
+    { id: 102, src: junior2, alt: 'Sale a la cancha de la mano de un niño antes del partido', category: 'retrato', pos: '50% 30%' },
+    { id: 103, src: junior3, alt: 'Corre en ataque con la camiseta azul de Junior', category: 'cancha', pos: '60% 45%' },
+    { id: 104, src: junior4, alt: 'Festeja un gol con sus compañeros de Junior', category: 'cancha', pos: '58% 30%' },
+    { id: 105, src: junior5, alt: 'Encara entre defensores con la camiseta azul de Junior', category: 'cancha', pos: '45% 50%' },
+    { id: 106, src: junior6, alt: 'Ataca el área frente al arco con Junior', category: 'cancha', pos: '55% 50%' },
+    { id: 107, src: junior7, alt: 'Maneja la pelota frente a la hinchada de Junior', category: 'cancha', pos: '55% 50%' },
+    { id: 108, src: junior8, alt: 'Remata al arco con la camiseta azul de Junior', category: 'cancha', pos: '45% 50%' },
+    { id: 109, src: junior9, alt: 'De espaldas, con el 19 de Junior en la cancha', category: 'cancha', pos: '48% 60%' },
+    { id: 110, src: junior10, alt: 'Primer plano de espaldas con el 19 y el nombre Polaco', category: 'retrato', pos: '55% 50%' },
     { id: 1, src: image1, alt: 'Hace el saludo militar tras un gol en la Copa Libertadores', category: 'cancha' },
     { id: 2, src: image2, alt: 'Remata al arco con Independiente Medellín',                    category: 'cancha' },
     { id: 3, src: image3, alt: 'Ataca el área entre defensores rivales',                       category: 'cancha' },
