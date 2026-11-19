@@ -3,6 +3,8 @@ import { Box, Flex, Grid, Text, Image } from '@chakra-ui/react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { playerData } from '../../data/playerData'
+import useSeasonStats from '../../hooks/useSeasonStats'
+import { seasonTiles, seasonTitle } from '../../lib/seasonTiles'
 import ClubsGrid from '../Clubs/ClubsGrid'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -18,8 +20,15 @@ function Label({ children, color = 'brand.gray', ...rest }) {
   )
 }
 
-function ScoreBoard() {
-  const [main, ...rest] = playerData.seasonStats
+// Con datos de la API, Goles va en el número grande (como en playerData).
+function apiItems(season) {
+  const tiles = seasonTiles(season)
+  const goals = tiles.find((t) => t.label === 'Goles')
+  return goals ? [goals, ...tiles.filter((t) => t !== goals)] : tiles
+}
+
+function ScoreBoard({ items }) {
+  const [main, ...rest] = items
   const hlLabel = 'Valoración'
   return (
     <Grid data-reveal templateColumns={{ base: '1fr', lg: '1.1fr 1fr' }} gap="2px" bg={LINE} border="1px solid" borderColor={LINE}>
@@ -186,6 +195,9 @@ function ScorerBlock() {
 
 export default function StatsMarcador() {
   const sectionRef = useRef(null)
+  // Temporada en curso desde API-Football; sin datos, los valores fijos.
+  const season = useSeasonStats()
+  const seasonItems = season ? apiItems(season) : playerData.seasonStats
 
   useEffect(() => {
     const mm = gsap.matchMedia()
@@ -213,13 +225,13 @@ export default function StatsMarcador() {
     <Box as="section" id="estadisticas" ref={sectionRef} position="relative" bg="brand.dark" px={{ base: 5, md: 12, lg: '60px' }} py={{ base: 16, lg: 24 }} overflow="clip">
       <Box maxW="1400px" mx="auto">
         <Box data-reveal mb={{ base: 7, lg: 11 }}>
-          <Label color="brand.dorado" fontSize="11px" letterSpacing="0.28em">Temporada {playerData.season}</Label>
+          <Label color="brand.dorado" fontSize="11px" letterSpacing="0.28em">{seasonTitle(season, `Temporada ${playerData.season}`)}</Label>
           <Text as="h2" mt={2} fontFamily="heading" fontWeight="bold" fontSize={{ base: '44px', lg: 'clamp(44px, 5.4vw, 84px)' }} lineHeight={0.9} color="brand.amber" textTransform="uppercase">
             Estadísticas
           </Text>
         </Box>
 
-        <ScoreBoard />
+        <ScoreBoard items={seasonItems} />
         <Profile />
         <Attributes />
         <ScorerBlock />
